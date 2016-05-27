@@ -1,0 +1,14 @@
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\bin\Debug\TD-LTE上行干扰分析系统.exe.config
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\bin\Debug\TD-LTE上行干扰分析系统.exe
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\bin\Debug\TD-LTE上行干扰分析系统.pdb
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD-LTE上行干扰分析系统.csprojResolveAssemblyReference.cache
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.Properties.Resources.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD-LTE上行干扰分析系统.csproj.GenerateResource.Cache
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD-LTE上行干扰分析系统.exe
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD-LTE上行干扰分析系统.pdb
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.main.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.DbLogin.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.ProjectCreate.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.ProjectInquire.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.progress.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.ProjectDelete.resources
