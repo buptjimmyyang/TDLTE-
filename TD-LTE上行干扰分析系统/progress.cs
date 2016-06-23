@@ -22,6 +22,7 @@ namespace TD_LTE上行干扰分析系统
         private Thread thread;
         private ExportFile file;
         private int finished = -2;
+
         public progress(DataTable _table,string _path,int _t)
         {
             InitializeComponent();
@@ -100,7 +101,7 @@ namespace TD_LTE上行干扰分析系统
             }
             this.progressBar.PerformStep();
             this.label1.Text = "";
-            this.label1.Text += "处理进度:"+file.currentNum/file.totalNum*100+"%";
+            this.label1.Text += "处理进度:"+file.currentNum/(file.totalNum+1)*100+"%";
         }
     }
 }

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+<tbProjectManagement>
+CREATE TABLE [dbo].[tbProjectManagement] (
+    [PROJECT_ID] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NOT NULL,
+    [VERSION_DATE] [datetime] NOT NULL,
+    [DB_NAME] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
+    [CITY] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
+    [PRINCIPAL] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL ) ON [PRIMARY]
+</tbProjectManagement>
+
+<tbInterferenceType>
+CREATE TABLE [dbo].[tbInterferenceType] (
+    [InterferenceID] [int] NOT NULL,
+    [InterferenceName] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NOT NULL) ON [PRIMARY]
+</tbInterferenceType>
+<tbPRBSample_Modeling>
+CREATE TABLE [dbo].[tbPRBSample_Modeling] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+    [CellName] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
+    [Period] [int] NULL,
+[PRB0] [float] NOT NULL,[PRB1] [float] NOT NULL,[PRB2] [float] NOT NULL,[PRB3] [float] NOT NULL,[PRB4] [float] NOT NULL,[PRB5] [float] NOT NULL,[PRB6] [float] NOT NULL,[PRB7] [float] NOT NULL,[PRB8] [float] NOT NULL,[PRB9] [float] NOT NULL,[PRB10] [float] NOT NULL,[PRB11] [float] NOT NULL,[PRB12] [float] NOT NULL,[PRB13] [float] NOT NULL,[PRB14] [float] NOT NULL,[PRB15] [float] NOT NULL,[PRB16] [float] NOT NULL,[PRB17] [float] NOT NULL,[PRB18] [float] NOT NULL,[PRB19] [float] NOT NULL,[PRB20] [float] NOT NULL,[PRB21] [float] NOT NULL,[PRB22] [float] NOT NULL,[PRB23] [float] NOT NULL,[PRB24] [float] NOT NULL,[PRB25] [float] NOT NULL,[PRB26] [float] NOT NULL,[PRB27] [float] NOT NULL,[PRB28] [float] NOT NULL,[PRB29] [float] NOT NULL,[PRB30] [float] NOT NULL,[PRB31] [float] NOT NULL,[PRB32] [float] NOT NULL,[PRB33] [float] NOT NULL,[PRB34] [float] NOT NULL,[PRB35] [float] NOT NULL,[PRB36] [float] NOT NULL,[PRB37] [float] NOT NULL,[PRB38] [float] NOT NULL,[PRB39] [float] NOT NULL,[PRB40] [float] NOT NULL,[PRB41] [float] NOT NULL,[PRB42] [float] NOT NULL,[PRB43] [float] NOT NULL,[PRB44] [float] NOT NULL,[PRB45] [float] NOT NULL,[PRB46] [float] NOT NULL,[PRB47] [float] NOT NULL,[PRB48] [float] NOT NULL,[PRB49] [float] NOT NULL,[PRB50] [float] NOT NULL,[PRB51] [float] NOT NULL,[PRB52] [float] NOT NULL,[PRB53] [float] NOT NULL,[PRB54] [float] NOT NULL,[PRB55] [float] NOT NULL,[PRB56] [float] NOT NULL,[PRB57] [float] NOT NULL,[PRB58] [float] NOT NULL,[PRB59] [float] NOT NULL,[PRB60] [float] NOT NULL,[PRB61] [float] NOT NULL,[PRB62] [float] NOT NULL,[PRB63] [float] NOT NULL,[PRB64] [float] NOT NULL,[PRB65] [float] NOT NULL,[PRB66] [float] NOT NULL,[PRB67] [float] NOT NULL,[PRB68] [float] NOT NULL,[PRB69] [float] NOT NULL,[PRB70] [float] NOT NULL,[PRB71] [float] NOT NULL,[PRB72] [float] NOT NULL,[PRB73] [float] NOT NULL,[PRB74] [float] NOT NULL,[PRB75] [float] NOT NULL,[PRB76] [float] NOT NULL,[PRB77] [float] NOT NULL,[PRB78] [float] NOT NULL,[PRB79] [float] NOT NULL,[PRB80] [float] NOT NULL,[PRB81] [float] NOT NULL,[PRB82] [float] NOT NULL,[PRB83] [float] NOT NULL,[PRB84] [float] NOT NULL,[PRB85] [float] NOT NULL,[PRB86] [float] NOT NULL,[PRB87] [float] NOT NULL,[PRB88] [float] NOT NULL,[PRB89] [float] NOT NULL,[PRB90] [float] NOT NULL,[PRB91] [float] NOT NULL,[PRB92] [float] NOT NULL,[PRB93] [float] NOT NULL,[PRB94] [float] NOT NULL,[PRB95] [float] NOT NULL,[PRB96] [float] NOT NULL,[PRB97] [float] NOT NULL,[PRB98] [float] NOT NULL,[PRB99] [float] NOT NULL,[InterferenceID][int] not NULL) ON [PRIMARY]
+
+</tbPRBSample_Modeling>
+<tbPRBSample_Recognition>
+CREATE TABLE [dbo].[tbPRBSample_Recognition] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+     [CellName] [nvarchar](255)  NOT NULL,
+    [Period] [int] NULL,
+[PRB1] [float] NOT NULL,[PRB2] [float] NOT NULL,[PRB3] [float] NOT NULL,[PRB4] [float] NOT NULL,[PRB5] [float] NOT NULL,[PRB6] [float] NOT NULL,[PRB7] [float] NOT NULL,[PRB8] [float] NOT NULL,[PRB9] [float] NOT NULL,[PRB10] [float] NOT NULL,[PRB11] [float] NOT NULL,[PRB12] [float] NOT NULL,[PRB13] [float] NOT NULL,[PRB14] [float] NOT NULL,[PRB15] [float] NOT NULL,[PRB16] [float] NOT NULL,[PRB17] [float] NOT NULL,[PRB18] [float] NOT NULL,[PRB19] [float] NOT NULL,[PRB20] [float] NOT NULL,[PRB21] [float] NOT NULL,[PRB22] [float] NOT NULL,[PRB23] [float] NOT NULL,[PRB24] [float] NOT NULL,[PRB25] [float] NOT NULL,[PRB26] [float] NOT NULL,[PRB27] [float] NOT NULL,[PRB28] [float] NOT NULL,[PRB29] [float] NOT NULL,[PRB30] [float] NOT NULL,[PRB31] [float] NOT NULL,[PRB32] [float] NOT NULL,[PRB33] [float] NOT NULL,[PRB34] [float] NOT NULL,[PRB35] [float] NOT NULL,[PRB36] [float] NOT NULL,[PRB37] [float] NOT NULL,[PRB38] [float] NOT NULL,[PRB39] [float] NOT NULL,[PRB40] [float] NOT NULL,[PRB41] [float] NOT NULL,[PRB42] [float] NOT NULL,[PRB43] [float] NOT NULL,[PRB44] [float] NOT NULL,[PRB45] [float] NOT NULL,[PRB46] [float] NOT NULL,[PRB47] [float] NOT NULL,[PRB48] [float] NOT NULL,[PRB49] [float] NOT NULL,[PRB50] [float] NOT NULL,[PRB51] [float] NOT NULL,[PRB52] [float] NOT NULL,[PRB53] [float] NOT NULL,[PRB54] [float] NOT NULL,[PRB55] [float] NOT NULL,[PRB56] [float] NOT NULL,[PRB57] [float] NOT NULL,[PRB58] [float] NOT NULL,[PRB59] [float] NOT NULL,[PRB60] [float] NOT NULL,[PRB61] [float] NOT NULL,[PRB62] [float] NOT NULL,[PRB63] [float] NOT NULL,[PRB64] [float] NOT NULL,[PRB65] [float] NOT NULL,[PRB66] [float] NOT NULL,[PRB67] [float] NOT NULL,[PRB68] [float] NOT NULL,[PRB69] [float] NOT NULL,[PRB70] [float] NOT NULL,[PRB71] [float] NOT NULL,[PRB72] [float] NOT NULL,[PRB73] [float] NOT NULL,[PRB74] [float] NOT NULL,[PRB75] [float] NOT NULL,[PRB76] [float] NOT NULL,[PRB77] [float] NOT NULL,[PRB78] [float] NOT NULL,[PRB79] [float] NOT NULL,[PRB80] [float] NOT NULL,[PRB81] [float] NOT NULL,[PRB82] [float] NOT NULL,[PRB83] [float] NOT NULL,[PRB84] [float] NOT NULL,[PRB85] [float] NOT NULL,[PRB86] [float] NOT NULL,[PRB87] [float] NOT NULL,[PRB88] [float] NOT NULL,[PRB89] [float] NOT NULL,[PRB90] [float] NOT NULL,[PRB91] [float] NOT NULL,[PRB92] [float] NOT NULL,[PRB93] [float] NOT NULL,[PRB94] [float] NOT NULL,[PRB95] [float] NOT NULL,[PRB96] [float] NOT NULL,[PRB97] [float] NOT NULL,[PRB98] [float] NOT NULL,[PRB99] [float] NOT NULL) ON [PRIMARY]
+
+
+</tbPRBSample_Recognition>
+
+<tbFeartureSampleModeling>
+CREATE TABLE [dbo].[tbFeartureSampleModeling] (
+    [ModelID] [int] NOT NULL,
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL ,
+    [RBOrder1] [int] NOT NULL,
+    [RBOrder2] [int] NOT NULL,
+    [RBOrder3] [int] NOT NULL,
+    [RBOrder4] [int] NOt NULL,
+    [RBOrder5] [int] NOT NULL,
+    [InterferenceCoefficient] [NUMERIC](10,2) NOT NULL,
+    [AverageOfPRB0_99] [NUMERIC](10,2) NOT NULL,
+    [AverageOfPRB60_99] [NUMERIC](10,2) NOT NULL,
+    [Slope0_49] [NUMERIC](10,2) NOT NULL,
+    [Slope50_99] [NUMERIC](10,2) NOT NULL,
+    [Slope0_99] [NUMERIC](10,2) NOT NULL,
+    [Variance0_99] [NUMERIC](10,2) NOT NULL,
+    [BurstNumPRB0_99] [int] NOT NULL,
+    [InterferenceID] [int] NOT NULL,
+     [SampleType] [int] NOT NULL) ON [PRIMARY]
+</tbFeartureSampleModeling>
+<tbFeartureSampleRecognition>
+CREATE TABLE [dbo].[tbFeartureSampleRecognition] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+    [RBOrder1] [int] NOT NULL,
+    [RBOrder2] [int] NOT NULL,
+    [RBOrder3] [int] NOT NULL,
+    [RBOrder4] [int] NOt NULL,
+    [RBOrder5] [int] NOT NULL,
+    [InterferenceCoefficient] [NUMERIC](10,2) NOT NULL,
+    [AverageOfPRB0_99] [NUMERIC](10,2) NOT NULL,
+    [AverageOfPRB60_99] [NUMERIC](10,2) NOT NULL,
+    [Slope0_49] [NUMERIC](10,2) NOT NULL,
+    [Slope50_99] [NUMERIC](10,2) NOT NULL,
+    [Slope0_99] [NUMERIC](10,2) NOT NULL,
+    [Variance0_99] [NUMERIC](10,2) NOT NULL,
+    [BurstNumPRB0_99] [int] NOT NULL,
+    [InterferenceID] [int] NOT NULL,
+     [SampleType] [int] NOT NULL) ON [PRIMARY]
+</tbFeartureSampleRecognition>
+<tbPRBSmoothedSample_Modeling>
+CREATE TABLE [dbo].[tbPRBSmoothedSample_Modeling] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime]  NOT NULL,
+[SmoothPRB0] [float] NOT NULL,[SmoothPRB1] [float] NOT NULL,[SmoothPRB2] [float] NOT NULL,[SmoothPRB3] [float] NOT NULL,[SmoothPRB4] [float] NOT NULL,[SmoothPRB5] [float] NOT NULL,[SmoothPRB6] [float] NOT NULL,[SmoothPRB7] [float] NOT NULL,[SmoothPRB8] [float] NOT NULL,[SmoothPRB9] [float] NOT NULL,[SmoothPRB10] [float] NOT NULL,[SmoothPRB11] [float] NOT NULL,[SmoothPRB12] [float] NOT NULL,[SmoothPRB13] [float] NOT NULL,[SmoothPRB14] [float] NOT NULL,[SmoothPRB15] [float] NOT NULL,[SmoothPRB16] [float] NOT NULL,[SmoothPRB17] [float] NOT NULL,[SmoothPRB18] [float] NOT NULL,[SmoothPRB19] [float] NOT NULL,[SmoothPRB20] [float] NOT NULL,[SmoothPRB21] [float] NOT NULL,[SmoothPRB22] [float] NOT NULL,[SmoothPRB23] [float] NOT NULL,[SmoothPRB24] [float] NOT NULL,[SmoothPRB25] [float] NOT NULL,[SmoothPRB26] [float] NOT NULL,[SmoothPRB27] [float] NOT NULL,[SmoothPRB28] [float] NOT NULL,[SmoothPRB29] [float] NOT NULL,[SmoothPRB30] [float] NOT NULL,[SmoothPRB31] [float] NOT NULL,[SmoothPRB32] [float] NOT NULL,[SmoothPRB33] [float] NOT NULL,[SmoothPRB34] [float] NOT NULL,[SmoothPRB35] [float] NOT NULL,[SmoothPRB36] [float] NOT NULL,[SmoothPRB37] [float] NOT NULL,[SmoothPRB38] [float] NOT NULL,[SmoothPRB39] [float] NOT NULL,[SmoothPRB40] [float] NOT NULL,[SmoothPRB41] [float] NOT NULL,[SmoothPRB42] [float] NOT NULL,[SmoothPRB43] [float] NOT NULL,[SmoothPRB44] [float] NOT NULL,[SmoothPRB45] [float] NOT NULL,[SmoothPRB46] [float] NOT NULL,[SmoothPRB47] [float] NOT NULL,[SmoothPRB48] [float] NOT NULL,[SmoothPRB49] [float] NOT NULL,[SmoothPRB50] [float] NOT NULL,[SmoothPRB51] [float] NOT NULL,[SmoothPRB52] [float] NOT NULL,[SmoothPRB53] [float] NOT NULL,[SmoothPRB54] [float] NOT NULL,[SmoothPRB55] [float] NOT NULL,[SmoothPRB56] [float] NOT NULL,[SmoothPRB57] [float] NOT NULL,[SmoothPRB58] [float] NOT NULL,[SmoothPRB59] [float] NOT NULL,[SmoothPRB60] [float] NOT NULL,[SmoothPRB61] [float] NOT NULL,[SmoothPRB62] [float] NOT NULL,[SmoothPRB63] [float] NOT NULL,[SmoothPRB64] [float] NOT NULL,[SmoothPRB65] [float] NOT NULL,[SmoothPRB66] [float] NOT NULL,[SmoothPRB67] [float] NOT NULL,[SmoothPRB68] [float] NOT NULL,[SmoothPRB69] [float] NOT NULL,[SmoothPRB70] [float] NOT NULL,[SmoothPRB71] [float] NOT NULL,[SmoothPRB72] [float] NOT NULL,[SmoothPRB73] [float] NOT NULL,[SmoothPRB74] [float] NOT NULL,[SmoothPRB75] [float] NOT NULL,[SmoothPRB76] [float] NOT NULL,[SmoothPRB77] [float] NOT NULL,[SmoothPRB78] [float] NOT NULL,[SmoothPRB79] [float] NOT NULL,[SmoothPRB80] [float] NOT NULL,[SmoothPRB81] [float] NOT NULL,[SmoothPRB82] [float] NOT NULL,[SmoothPRB83] [float] NOT NULL,[SmoothPRB84] [float] NOT NULL,[SmoothPRB85] [float] NOT NULL,[SmoothPRB86] [float] NOT NULL,[SmoothPRB87] [float] NOT NULL,[SmoothPRB88] [float] NOT NULL,[SmoothPRB89] [float] NOT NULL,[SmoothPRB90] [float] NOT NULL,[SmoothPRB91] [float] NOT NULL,[SmoothPRB92] [float] NOT NULL,[SmoothPRB93] [float] NOT NULL,[SmoothPRB94] [float] NOT NULL,[SmoothPRB95] [float] NOT NULL,[SmoothPRB96] [float] NOT NULL,[SmoothPRB97] [float] NOT NULL,[SmoothPRB98] [float] NOT NULL,[SmoothPRB99] [float] NOT NULL,[BurstNumPRB0_99] [int] NOT NULL) ON [PRIMARY]
+
+</tbPRBSmoothedSample_Modeling>
+<tbPRBSmoothedSample_Recognition>
+CREATE TABLE [dbo].[tbPRBSmoothedSample_Recognition] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+[SmoothPRB0] [float] NOT NULL,[SmoothPRB1] [float] NOT NULL,[SmoothPRB2] [float] NOT NULL,[SmoothPRB3] [float] NOT NULL,[SmoothPRB4] [float] NOT NULL,[SmoothPRB5] [float] NOT NULL,[SmoothPRB6] [float] NOT NULL,[SmoothPRB7] [float] NOT NULL,[SmoothPRB8] [float] NOT NULL,[SmoothPRB9] [float] NOT NULL,[SmoothPRB10] [float] NOT NULL,[SmoothPRB11] [float] NOT NULL,[SmoothPRB12] [float] NOT NULL,[SmoothPRB13] [float] NOT NULL,[SmoothPRB14] [float] NOT NULL,[SmoothPRB15] [float] NOT NULL,[SmoothPRB16] [float] NOT NULL,[SmoothPRB17] [float] NOT NULL,[SmoothPRB18] [float] NOT NULL,[SmoothPRB19] [float] NOT NULL,[SmoothPRB20] [float] NOT NULL,[SmoothPRB21] [float] NOT NULL,[SmoothPRB22] [float] NOT NULL,[SmoothPRB23] [float] NOT NULL,[SmoothPRB24] [float] NOT NULL,[SmoothPRB25] [float] NOT NULL,[SmoothPRB26] [float] NOT NULL,[SmoothPRB27] [float] NOT NULL,[SmoothPRB28] [float] NOT NULL,[SmoothPRB29] [float] NOT NULL,[SmoothPRB30] [float] NOT NULL,[SmoothPRB31] [float] NOT NULL,[SmoothPRB32] [float] NOT NULL,[SmoothPRB33] [float] NOT NULL,[SmoothPRB34] [float] NOT NULL,[SmoothPRB35] [float] NOT NULL,[SmoothPRB36] [float] NOT NULL,[SmoothPRB37] [float] NOT NULL,[SmoothPRB38] [float] NOT NULL,[SmoothPRB39] [float] NOT NULL,[SmoothPRB40] [float] NOT NULL,[SmoothPRB41] [float] NOT NULL,[SmoothPRB42] [float] NOT NULL,[SmoothPRB43] [float] NOT NULL,[SmoothPRB44] [float] NOT NULL,[SmoothPRB45] [float] NOT NULL,[SmoothPRB46] [float] NOT NULL,[SmoothPRB47] [float] NOT NULL,[SmoothPRB48] [float] NOT NULL,[SmoothPRB49] [float] NOT NULL,[SmoothPRB50] [float] NOT NULL,[SmoothPRB51] [float] NOT NULL,[SmoothPRB52] [float] NOT NULL,[SmoothPRB53] [float] NOT NULL,[SmoothPRB54] [float] NOT NULL,[SmoothPRB55] [float] NOT NULL,[SmoothPRB56] [float] NOT NULL,[SmoothPRB57] [float] NOT NULL,[SmoothPRB58] [float] NOT NULL,[SmoothPRB59] [float] NOT NULL,[SmoothPRB60] [float] NOT NULL,[SmoothPRB61] [float] NOT NULL,[SmoothPRB62] [float] NOT NULL,[SmoothPRB63] [float] NOT NULL,[SmoothPRB64] [float] NOT NULL,[SmoothPRB65] [float] NOT NULL,[SmoothPRB66] [float] NOT NULL,[SmoothPRB67] [float] NOT NULL,[SmoothPRB68] [float] NOT NULL,[SmoothPRB69] [float] NOT NULL,[SmoothPRB70] [float] NOT NULL,[SmoothPRB71] [float] NOT NULL,[SmoothPRB72] [float] NOT NULL,[SmoothPRB73] [float] NOT NULL,[SmoothPRB74] [float] NOT NULL,[SmoothPRB75] [float] NOT NULL,[SmoothPRB76] [float] NOT NULL,[SmoothPRB77] [float] NOT NULL,[SmoothPRB78] [float] NOT NULL,[SmoothPRB79] [float] NOT NULL,[SmoothPRB80] [float] NOT NULL,[SmoothPRB81] [float] NOT NULL,[SmoothPRB82] [float] NOT NULL,[SmoothPRB83] [float] NOT NULL,[SmoothPRB84] [float] NOT NULL,[SmoothPRB85] [float] NOT NULL,[SmoothPRB86] [float] NOT NULL,[SmoothPRB87] [float] NOT NULL,[SmoothPRB88] [float] NOT NULL,[SmoothPRB89] [float] NOT NULL,[SmoothPRB90] [float] NOT NULL,[SmoothPRB91] [float] NOT NULL,[SmoothPRB92] [float] NOT NULL,[SmoothPRB93] [float] NOT NULL,[SmoothPRB94] [float] NOT NULL,[SmoothPRB95] [float] NOT NULL,[SmoothPRB96] [float] NOT NULL,[SmoothPRB97] [float] NOT NULL,[SmoothPRB98] [float] NOT NULL,[SmoothPRB99] [float] NOT NULL,[BurstNumPRB0_99] [int] NOT NULL) ON [PRIMARY]
+
+<tbPRBSmoothedSample_Recognition>
+<tbBurstInfo>
+CREATE TABLE [dbo].[tbBurstInfo] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+    [BurstPRB] [int] NOT NULL,
+    [BurstValue] [NUMERIC](10,2) NOT NULL) ON [PRIMARY]
+</tbBurstInfo>
+<tbModelInfo>
+CREATE TABLE [dbo].[tbModelInfo] (
+    [ModelID] [int] NOT NULL,
+    [ModelStartTime] [datetime] NOT NULL,
+    [ModelEndTime] [datetime] NOT NULL,
+[ModelAddress] [nvarchar](255) NOT NULL,
+[TrainSampleNum] [int]  NULL,
+[TestSampleNum] [int]  NULL,
+[TreeNum] [int]  NULL) ON [PRIMARY]
+</tbModelInfo>
+<tbModelTreeInfo>
+CREATE TABLE [dbo].[tbModelTreeInfo] (
+    [ModelID] [int] NULL,
+[TreeID] [int] NULL,
+[InteriorNodeNum] [int] NULL,
+[LeafNodeNum] [int] NULL,
+[AttibuteNum] [int] NULL,
+[Depth] [int] NULL,
+[Rules] [text] NULL) ON [PRIMARY]
+</tbModelTreeInfo>
+
+</Configuration>

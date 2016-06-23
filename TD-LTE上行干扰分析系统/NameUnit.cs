@@ -16,118 +16,42 @@ namespace TD_LTE上行干扰分析系统
     /// </summary>
     class NameUnit
     {
+        //**************
+        //选择项目后保存数据库名称
+        public static string selectDbName = "";
+        public static string fileType = "";
+        public static string importModel="";
+        public static string importTableName = "";
+        ///文件导入相关****************
+
         public  static string guradDb = "GUARD";
         public  static string baseName="TDLTE_";
         public static string projectTable = "tbProjectManagement";
-        public static string tbProjectManagement = @"CREATE TABLE [dbo].[tbProjectManagement] (
-    [PROJECT_ID] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NOT NULL,
-    [VERSION_DATE] [datetime] NOT NULL,
-    [DB_NAME] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-    [CITY] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-    [PRINCIPAL] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL ) ON [PRIMARY]
-
-";
-        public static string tbInterferenceType = @"CREATE TABLE [dbo].[tbInterferenceType] (
-    [InterferenceID] [int] NOT NULL,
-    [InterferenceName] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NOT NULL) ON [PRIMARY]
-";
+        public static string tbProjectManagement = "";
+        public static string tbInterferenceType = "";
         //程序中添加字段
-        public  static string tbPRBSample_Modeling = @"CREATE TABLE [dbo].[tbPRBSample_Modeling] (
-    [CellID] [int] NOT NULL,
-    [StartTime] [datetime] NOT NULL,
-    [CellName] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
-    [Period] [int] NULL,
-";
+        public  static string tbPRBSample_Modeling = "";
         //程序中添加
-        public static string tbPRBSample_Recognition = @"CREATE TABLE [dbo].[tbPRBSample_Recognition] (
-    [CellID] [int] NOT NULL,
-    [StartTime] [datetime] NOT NULL,
-     [CellName] [datetime]  NOT NULL,
-    [Period] [int] NULL,
-";
+        public static string tbPRBSample_Recognition ="";
         //*
-        public  static string tbFeartureSampleModeling = @"CREATE TABLE [dbo].[tbFeartureSampleModeling] (
-    [ModelID] [int] NOT NULL,
-    [CellID] [int] NOT NULL,
-    [StartTime] [datetime] NOT NULL ,
-    [RBOrder1] [int] NOT NULL,
-    [RBOrder2] [int] NOT NULL,
-    [RBOrder3] [int] NOT NULL,
-    [RBOrder4] [int] NOt NULL,
-    [RBOrder5] [int] NOT NULL,
-    [InterferenceCoefficient] [NUMERIC](10,2) NOT NULL,
-    [AverageOfPRB0_99] [NUMERIC](10,2) NOT NULL,
-    [AverageOfPRB60_99] [NUMERIC](10,2) NOT NULL,
-    [Slope0_49] [NUMERIC](10,2) NOT NULL,
-    [Slope50_99] [NUMERIC](10,2) NOT NULL,
-    [Slope0_99] [NUMERIC](10,2) NOT NULL,
-    [Variance0_99] [NUMERIC](10,2) NOT NULL,
-    [BurstNumPRB0_99] [int] NOT NULL,
-    [InterferenceID] [int] NOT NULL,
-     [SampleType] [int] NOT NULL) ON [PRIMARY]
-";
+        public  static string tbFeartureSampleModeling = "";
         //*
-        public  static string tbFeartureSampleRecognition = @"CREATE TABLE [dbo].[tbFeartureSampleRecognition] (
-    [CellID] [int] NOT NULL,
-    [StartTime] [datetime] NOT NULL,
-    [RBOrder1] [int] NOT NULL,
-    [RBOrder2] [int] NOT NULL,
-    [RBOrder3] [int] NOT NULL,
-    [RBOrder4] [int] NOt NULL,
-    [RBOrder5] [int] NOT NULL,
-    [InterferenceCoefficient] [NUMERIC](10,2) NOT NULL,
-    [AverageOfPRB0_99] [NUMERIC](10,2) NOT NULL,
-    [AverageOfPRB60_99] [NUMERIC](10,2) NOT NULL,
-    [Slope0_49] [NUMERIC](10,2) NOT NULL,
-    [Slope50_99] [NUMERIC](10,2) NOT NULL,
-    [Slope0_99] [NUMERIC](10,2) NOT NULL,
-    [Variance0_99] [NUMERIC](10,2) NOT NULL,
-    [BurstNumPRB0_99] [int] NOT NULL,
-    [InterferenceID] [int] NOT NULL,
-     [SampleType] [int] NOT NULL) ON [PRIMARY]
-";
+        public  static string tbFeartureSampleRecognition ="";
         //程序中添加
-        public  static string tbPRBSmoothedSample_Modeling = @"CREATE TABLE [dbo].[tbPRBSmoothedSample_Modeling] (
-    [CellID] [int] NOT NULL,
-    [StartTime] [datetime]  NOT NULL,
-";
+        public  static string tbPRBSmoothedSample_Modeling = "";
         //程序中添加
-        public  static string tbPRBSmoothedSample_Recognition = @"CREATE TABLE [dbo].[tbPRBSmoothedSample_Recognition] (
-    [CellID] [int] NOT NULL,
-    [StartTime] [datetime] NOT NULL,
-";
-        public  static string tbBurstInfo = @"CREATE TABLE [dbo].[tbBurstInfo] (
-    [CellID] [int] NOT NULL,
-    [StartTime] [datetime] NOT NULL,
-    [BurstPRB] [int] NOT NULL,
-    [BurstValue] [NUMERIC](10,2) NOT NULL) ON [PRIMARY]
-";
-       public  static string tbModelInfo = @"CREATE TABLE [dbo].[tbModelInfo] (
-    [ModelID] [int] NOT NULL,
-    [ModelStartTime] [datetime] NOT NULL,
-    [ModelEndTime] [datetime] NOT NULL,
-[ModelAddress] [nvarchar](255) NOT NULL,
-[TrainSampleNum] [int]  NULL,
-[TestSampleNum] [int]  NULL,
-[TreeNum] [int]  NULL) ON [PRIMARY]
-";
-        public  static string tbModelTreeInfo = @"CREATE TABLE [dbo].[tbModelTreeInfo] (
-    [ModelID] [int] NULL,
-[TreeID] [int] NULL,
-[InteriorNodeNum] [int] NULL,
-[LeafNodeNum] [int] NULL,
-[AttibuteNum] [int] NULL,
-[Depth] [int] NULL,
-[Rules] [text] NULL) ON [PRIMARY]
-";
-        private static void getFullSql()
+        public  static string tbPRBSmoothedSample_Recognition = "";
+        public  static string tbBurstInfo ="";
+       public  static string tbModelInfo = "";
+        public  static string tbModelTreeInfo ="";
+       /* private static void getFullSql()
         {
             //tbPRBSample_Modeling
             for (int i = 0; i <= 99; i++)
             {
                 tbPRBSample_Modeling = tbPRBSample_Modeling + "[PRB" + i + "] [float] NOT NULL,";
             }
-            tbPRBSample_Modeling += "[InterferenceID][int] NOT NULL) ON [PRIMARY]";
+            tbPRBSample_Modeling += "[InterferenceID][int] not NULL) ON [PRIMARY]";
 
             //tbPRBSample_Recognition
             for (int i = 1; i <= 98; i++)
@@ -150,18 +74,32 @@ namespace TD_LTE上行干扰分析系统
             }
             tbPRBSmoothedSample_Recognition += "[BurstNumPRB0_99] [int] NOT NULL) ON [PRIMARY]";
         }
+        * */
         public static void  initParams()
         {
-            getFullSql();
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbModelTreeInfo", ref tbModelTreeInfo);
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbModelInfo", ref tbModelInfo);
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbBurstInfo", ref tbBurstInfo);
+
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbPRBSmoothedSample_Recognition", ref tbPRBSmoothedSample_Recognition);
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbPRBSmoothedSample_Modeling", ref tbPRBSmoothedSample_Modeling);
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbFeartureSampleRecognition", ref tbFeartureSampleRecognition);
+
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbFeartureSampleModeling", ref tbFeartureSampleModeling);
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbPRBSample_Recognition", ref tbPRBSample_Recognition);
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbPRBSample_Modeling", ref tbPRBSample_Modeling);
+
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbInterferenceType", ref tbInterferenceType);
+            XMLHelper.instatnce().getSqlCommand("Configuration/createTable/tbProjectManagement", ref tbProjectManagement);
         }
         public static string getName(string name)
         {
             return baseName + name;
         }
         //判断项目是否存在
-        public static bool existProject(string proName)
+        public static bool existProject(string proName,string proArea)
         {
-            string sql = "select * from "+projectTable+" where PROJECT_ID = '" + proName + "'";
+            string sql = "select * from "+projectTable+" where PROJECT_ID = '" + proName + "' and CITY='"+proArea+"'";
             DbHelper db = DbHelper.getInstance();
             SqlConnection conn = db.getConn(db.getConnStr(NameUnit.getName(NameUnit.guradDb)));
             if (db.existSql(conn, sql))

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+<checkData>
+<createIndex>
+<checkIndex>
+if exists(select * from sys.indexes where name=N'index_:tableName')
+drop index index_:tableName
+</checkIndex>
+<indexSql>
+create index index_:tableName on :tableName(CellId,StartTime)
+</indexSql>
+</createIndex>
+<ReadRowNum>
+5000
+</ReadRowNum>
+<PRBLow>
+</PRBLow>
+-400
+<PRBHigh>
+0
+</PRBHigh>
+</checkData>
+  <DataImport>
+    <SqlCheckTrigger>
+		if exists(select * from sysobjects  where id=object_id(N'tg_update:tableName') and objectproperty(id,N'IsTrigger')=1) 
+        Drop trigger tg_update:tableName
+	</SqlCheckTrigger>
+    <!-- 创建触发器 -->
+    <SqlCreateTrigger_tbPRBSample_Modeling>
+		Create trigger [tg_updateModel] on [dbo].[tbPRBSample_Modeling]
+		instead of INSERT AS
+		begin
+			declare  @CellID int,@StartTime datetime,@CellName nvarchar(255),@Period int,@PRB0 float,@PRB1 float,@PRB2 float,@PRB3 float,@PRB4 float,@PRB5 float,@PRB6 float,@PRB7 float,@PRB8 float,@PRB9 float,@PRB10 float,
+			@PRB11 float,@PRB12 float,@PRB13 float,@PRB14 float,@PRB15 float,@PRB16 float,@PRB17 float,@PRB18 float,@PRB19 float,@PRB20 float,@PRB21 float,
+			@PRB22 float,@PRB23 float,@PRB24 float,@PRB25 float,@PRB26 float,@PRB27 float,@PRB28 float,@PRB29 float,@PRB30 float,@PRB31 float,@PRB32 float,
+			@PRB33 float,@PRB34 float,@PRB35 float,@PRB36 float,@PRB37 float,@PRB38 float,@PRB39 float,@PRB40 float,@PRB41 float,@PRB42 float,@PRB43 float,@PRB44 float,
+			@PRB45 float,@PRB46 float,@PRB47 float,@PRB48 float,@PRB49 float,@PRB50 float,@PRB51 float,@PRB52 float,@PRB53 float,@PRB54 float,@PRB55 float,@PRB56 float,
+			@PRB57 float,@PRB58 float,@PRB59 float,@PRB60 float,@PRB61 float,@PRB62 float,@PRB63 float,@PRB64 float,@PRB65 float,@PRB66 float,@PRB67 float,@PRB68 float,@PRB69 float,
+			@PRB70 float,@PRB71 float,@PRB72 float,@PRB73 float,@PRB74 float,@PRB75 float,@PRB76 float,@PRB77 float,@PRB78 float,@PRB79 float,@PRB80 float,@PRB81 float,@PRB82 float,
+			@PRB83 float,@PRB84 float,@PRB85 float,@PRB86 float,@PRB87 float,@PRB88 float,@PRB89 float,@PRB90 float,@PRB91 float,@PRB92 float,@PRB93 float,@PRB94 float,@PRB95 float,
+			@PRB96 float,@PRB97 float,@PRB98 float,@PRB99 float,@InterferenceID int
+
+					 
+			declare mcur cursor for
+				select CellID,StartTime,CellName,Period,PRB0,PRB1,PRB2,PRB3,PRB4,PRB5,PRB6,PRB7,PRB8,PRB9,PRB10,PRB11,PRB12,PRB13,PRB14,PRB15,PRB16,PRB17,PRB18,PRB19,PRB20,PRB21,PRB22,PRB23,PRB24,PRB25,PRB26,PRB27,PRB28,PRB29,PRB30,PRB31,PRB32,PRB33,PRB34,PRB35,PRB36,PRB37,PRB38,PRB39,PRB40,PRB41,PRB42,PRB43,PRB44,PRB45,PRB46,PRB47,PRB48,PRB49,PRB50,PRB51,PRB52,PRB53,PRB54,PRB55,PRB56,PRB57,PRB58,PRB59,PRB60,PRB61,PRB62,PRB63,PRB64,PRB65,PRB66,PRB67,PRB68,PRB69,PRB70,PRB71,PRB72,PRB73,PRB74,PRB75,PRB76,PRB77,PRB78,PRB79,PRB80,PRB81,PRB82,PRB83,PRB84,PRB85,PRB86,PRB87,PRB88,PRB89,PRB90,PRB91,PRB92,PRB93,PRB94,PRB95,PRB96,PRB97,PRB98,PRB99,InterferenceID
+
+				from inserted
+			open mcur
+				fetch next from mcur into 
+				@CellID,@StartTime,@CellName,@Period,@PRB0,@PRB1,@PRB2,@PRB3,@PRB4,@PRB5,@PRB6,@PRB7,@PRB8,@PRB9,@PRB10,@PRB11,@PRB12,@PRB13,@PRB14,@PRB15,@PRB16,@PRB17,@PRB18,@PRB19,@PRB20,@PRB21,@PRB22,@PRB23,@PRB24,@PRB25,@PRB26,@PRB27,@PRB28,@PRB29,@PRB30,@PRB31,@PRB32,@PRB33,@PRB34,@PRB35,@PRB36,@PRB37,@PRB38,@PRB39,@PRB40,@PRB41,@PRB42,@PRB43,@PRB44,@PRB45,@PRB46,@PRB47,@PRB48,@PRB49,@PRB50,@PRB51,@PRB52,@PRB53,@PRB54,@PRB55,@PRB56,@PRB57,@PRB58,@PRB59,@PRB60,@PRB61,@PRB62,@PRB63,@PRB64,@PRB65,@PRB66,@PRB67,@PRB68,@PRB69,@PRB70,@PRB71,@PRB72,@PRB73,@PRB74,@PRB75,@PRB76,@PRB77,@PRB78,@PRB79,@PRB80,@PRB81,@PRB82,@PRB83,@PRB84,@PRB85,@PRB86,@PRB87,@PRB88,@PRB89,@PRB90,@PRB91,@PRB92,@PRB93,@PRB94,@PRB95,@PRB96,@PRB97,@PRB98,@PRB99,@InterferenceID
+
+			while (@@fetch_status!=-1)
+				begin
+					if (not exists(select tbPRBSample_Modeling.CellID,tbPRBSample_Modeling.StartTime from tbPRBSample_Modeling where tbPRBSample_Modeling.CellID=@CellID and tbPRBSample_Modeling.StartTime=@StartTime))
+					begin
+						insert into tbPRBSample_Modeling (CellID,StartTime,CellName,Period,PRB0,PRB1,PRB2,PRB3,PRB4,PRB5,PRB6,PRB7,PRB8,PRB9,PRB10,PRB11,PRB12,PRB13,PRB14,PRB15,PRB16,PRB17,PRB18,PRB19,PRB20,PRB21,PRB22,PRB23,PRB24,PRB25,PRB26,PRB27,PRB28,PRB29,PRB30,PRB31,PRB32,PRB33,PRB34,PRB35,PRB36,PRB37,PRB38,PRB39,PRB40,PRB41,PRB42,PRB43,PRB44,PRB45,PRB46,PRB47,PRB48,PRB49,PRB50,PRB51,PRB52,PRB53,PRB54,PRB55,PRB56,PRB57,PRB58,PRB59,PRB60,PRB61,PRB62,PRB63,PRB64,PRB65,PRB66,PRB67,PRB68,PRB69,PRB70,PRB71,PRB72,PRB73,PRB74,PRB75,PRB76,PRB77,PRB78,PRB79,PRB80,PRB81,PRB82,PRB83,PRB84,PRB85,PRB86,PRB87,PRB88,PRB89,PRB90,PRB91,PRB92,PRB93,PRB94,PRB95,PRB96,PRB97,PRB98,PRB99,InterferenceID)
+						 values (@CellID,@StartTime,@CellName,@Period,@PRB0,@PRB1,@PRB2,@PRB3,@PRB4,@PRB5,@PRB6,@PRB7,@PRB8,@PRB9,@PRB10,@PRB11,@PRB12,@PRB13,@PRB14,@PRB15,@PRB16,@PRB17,@PRB18,@PRB19,@PRB20,@PRB21,@PRB22,@PRB23,@PRB24,@PRB25,@PRB26,@PRB27,@PRB28,@PRB29,@PRB30,@PRB31,@PRB32,@PRB33,@PRB34,@PRB35,@PRB36,@PRB37,@PRB38,@PRB39,@PRB40,@PRB41,@PRB42,@PRB43,@PRB44,@PRB45,@PRB46,@PRB47,@PRB48,@PRB49,@PRB50,@PRB51,@PRB52,@PRB53,@PRB54,@PRB55,@PRB56,@PRB57,@PRB58,@PRB59,@PRB60,@PRB61,@PRB62,@PRB63,@PRB64,@PRB65,@PRB66,@PRB67,@PRB68,@PRB69,@PRB70,@PRB71,@PRB72,@PRB73,@PRB74,@PRB75,@PRB76,@PRB77,@PRB78,@PRB79,@PRB80,@PRB81,@PRB82,@PRB83,@PRB84,@PRB85,@PRB86,@PRB87,@PRB88,@PRB89,@PRB90,@PRB91,@PRB92,@PRB93,@PRB94,@PRB95,@PRB96,@PRB97,@PRB98,@PRB99,@InterferenceID)
+					end
+					else begin
+						update tbPRBSample_Modeling
+						set CellID=@CellID,StartTime=@StartTime,CellName=@CellName,Period=@Period, PRB0=@PRB0,PRB1=@PRB1,PRB2=@PRB2,PRB3=@PRB3,PRB4=@PRB4,PRB5=@PRB5,PRB6=@PRB6,
+						PRB7=@PRB7,PRB8=@PRB8,PRB9=@PRB9,PRB10=@PRB10,PRB11=@PRB11,PRB12=@PRB12,PRB13=@PRB13,PRB14=@PRB14,PRB15=@PRB15,PRB16=@PRB16,PRB17=@PRB17,PRB18=@PRB18,PRB19=@PRB19,PRB20=@PRB20,PRB21=@PRB21,PRB22=@PRB22,PRB23=@PRB23,PRB24=@PRB24,PRB25=@PRB25,PRB26=@PRB26,PRB27=@PRB27,PRB28=@PRB28,PRB29=@PRB29,PRB30=@PRB30,PRB31=@PRB31,PRB32=@PRB32,PRB33=@PRB33,PRB34=@PRB34,PRB35=@PRB35,PRB36=@PRB36,PRB37=@PRB37,PRB38=@PRB38,PRB39=@PRB39,PRB40=@PRB40,PRB41=@PRB41,PRB42=@PRB42,PRB43=@PRB43,PRB44=@PRB44,PRB45=@PRB45,PRB46=@PRB46,PRB47=@PRB47,PRB48=@PRB48,PRB49=@PRB49,PRB50=@PRB50,PRB51=@PRB51,PRB52=@PRB52,PRB53=@PRB53,PRB54=@PRB54,PRB55=@PRB55,PRB56=@PRB56,PRB57=@PRB57,PRB58=@PRB58,PRB59=@PRB59,PRB60=@PRB60,PRB61=@PRB61,PRB62=@PRB62,PRB63=@PRB63,PRB64=@PRB64,PRB65=@PRB65,PRB66=@PRB66,PRB67=@PRB67,PRB68=@PRB68,PRB69=@PRB69,PRB70=@PRB70,PRB71=@PRB71,PRB72=@PRB72,PRB73=@PRB73,PRB74=@PRB74,PRB75=@PRB75,PRB76=@PRB76,PRB77=@PRB77,PRB78=@PRB78,PRB79=@PRB79,PRB80=@PRB80,PRB81=@PRB81,PRB82=@PRB82,PRB83=@PRB83,PRB84=@PRB84,PRB85=@PRB85,PRB86=@PRB86,PRB87=@PRB87,PRB88=@PRB88,PRB89=@PRB89,PRB90=@PRB90,PRB91=@PRB91,PRB92=@PRB92,PRB93=@PRB93,PRB94=@PRB94,PRB95=@PRB95,PRB96=@PRB96,
+						PRB97=@PRB97,PRB98=@PRB98,PRB99=@PRB99,InterferenceID=@InterferenceID
+
+						where tbPRBSample_Modeling.CellID=@CellID and tbPRBSample_Modeling.StartTime=@StartTime
+					end
+					fetch next from mcur into @CellID,@StartTime,@CellName,@Period,@PRB0,@PRB1,@PRB2,@PRB3,@PRB4,@PRB5,@PRB6,@PRB7,@PRB8,@PRB9,@PRB10,@PRB11,@PRB12,@PRB13,@PRB14,@PRB15,@PRB16,@PRB17,@PRB18,@PRB19,@PRB20,@PRB21,@PRB22,@PRB23,@PRB24,@PRB25,@PRB26,@PRB27,@PRB28,@PRB29,@PRB30,@PRB31,@PRB32,@PRB33,@PRB34,@PRB35,@PRB36,@PRB37,@PRB38,@PRB39,@PRB40,@PRB41,@PRB42,@PRB43,@PRB44,@PRB45,@PRB46,@PRB47,@PRB48,@PRB49,@PRB50,@PRB51,@PRB52,@PRB53,@PRB54,@PRB55,@PRB56,@PRB57,@PRB58,@PRB59,@PRB60,@PRB61,@PRB62,@PRB63,@PRB64,@PRB65,@PRB66,@PRB67,@PRB68,@PRB69,@PRB70,@PRB71,@PRB72,@PRB73,@PRB74,@PRB75,@PRB76,@PRB77,@PRB78,@PRB79,@PRB80,@PRB81,@PRB82,@PRB83,@PRB84,@PRB85,@PRB86,@PRB87,@PRB88,@PRB89,@PRB90,@PRB91,@PRB92,@PRB93,@PRB94,@PRB95,@PRB96,@PRB97,@PRB98,@PRB99,@InterferenceID
+
+				end
+				close mcur
+				deallocate mcur
+		end
+	</SqlCreateTrigger_tbPRBSample_Modeling>
+    <SqlCreateTrigger_tbPRBSample_Recognition>
+		Create trigger [tg_updateModel] on [dbo].[tbPRBSample_Recognition]
+		instead of INSERT AS
+		begin
+			declare  @CellID int,@StartTime datetime,@CellName nvarchar(255),@Period int,@PRB1 float,@PRB2 float,@PRB3 float,@PRB4 float,@PRB5 float,@PRB6 float,@PRB7 float,@PRB8 float,@PRB9 float,@PRB10 float,
+			@PRB11 float,@PRB12 float,@PRB13 float,@PRB14 float,@PRB15 float,@PRB16 float,@PRB17 float,@PRB18 float,@PRB19 float,@PRB20 float,@PRB21 float,
+			@PRB22 float,@PRB23 float,@PRB24 float,@PRB25 float,@PRB26 float,@PRB27 float,@PRB28 float,@PRB29 float,@PRB30 float,@PRB31 float,@PRB32 float,
+			@PRB33 float,@PRB34 float,@PRB35 float,@PRB36 float,@PRB37 float,@PRB38 float,@PRB39 float,@PRB40 float,@PRB41 float,@PRB42 float,@PRB43 float,@PRB44 float,
+			@PRB45 float,@PRB46 float,@PRB47 float,@PRB48 float,@PRB49 float,@PRB50 float,@PRB51 float,@PRB52 float,@PRB53 float,@PRB54 float,@PRB55 float,@PRB56 float,
+			@PRB57 float,@PRB58 float,@PRB59 float,@PRB60 float,@PRB61 float,@PRB62 float,@PRB63 float,@PRB64 float,@PRB65 float,@PRB66 float,@PRB67 float,@PRB68 float,@PRB69 float,
+			@PRB70 float,@PRB71 float,@PRB72 float,@PRB73 float,@PRB74 float,@PRB75 float,@PRB76 float,@PRB77 float,@PRB78 float,@PRB79 float,@PRB80 float,@PRB81 float,@PRB82 float,
+			@PRB83 float,@PRB84 float,@PRB85 float,@PRB86 float,@PRB87 float,@PRB88 float,@PRB89 float,@PRB90 float,@PRB91 float,@PRB92 float,@PRB93 float,@PRB94 float,@PRB95 float,
+			@PRB96 float,@PRB97 float,@PRB98 float,@PRB99 float
+
+					 
+			declare mcur cursor for
+				select CellID,StartTime,CellName,Period,PRB1,PRB2,PRB3,PRB4,PRB5,PRB6,PRB7,PRB8,PRB9,PRB10,PRB11,PRB12,PRB13,PRB14,PRB15,PRB16,PRB17,PRB18,PRB19,PRB20,PRB21,PRB22,PRB23,PRB24,PRB25,PRB26,PRB27,PRB28,PRB29,PRB30,PRB31,PRB32,PRB33,PRB34,PRB35,PRB36,PRB37,PRB38,PRB39,PRB40,PRB41,PRB42,PRB43,PRB44,PRB45,PRB46,PRB47,PRB48,PRB49,PRB50,PRB51,PRB52,PRB53,PRB54,PRB55,PRB56,PRB57,PRB58,PRB59,PRB60,PRB61,PRB62,PRB63,PRB64,PRB65,PRB66,PRB67,PRB68,PRB69,PRB70,PRB71,PRB72,PRB73,PRB74,PRB75,PRB76,PRB77,PRB78,PRB79,PRB80,PRB81,PRB82,PRB83,PRB84,PRB85,PRB86,PRB87,PRB88,PRB89,PRB90,PRB91,PRB92,PRB93,PRB94,PRB95,PRB96,PRB97,PRB98,PRB99
+
+				from inserted
+			open mcur
+				fetch next from mcur into 
+				@CellID,@StartTime,@CellName,@Period,@PRB1,@PRB2,@PRB3,@PRB4,@PRB5,@PRB6,@PRB7,@PRB8,@PRB9,@PRB10,@PRB11,@PRB12,@PRB13,@PRB14,@PRB15,@PRB16,@PRB17,@PRB18,@PRB19,@PRB20,@PRB21,@PRB22,@PRB23,@PRB24,@PRB25,@PRB26,@PRB27,@PRB28,@PRB29,@PRB30,@PRB31,@PRB32,@PRB33,@PRB34,@PRB35,@PRB36,@PRB37,@PRB38,@PRB39,@PRB40,@PRB41,@PRB42,@PRB43,@PRB44,@PRB45,@PRB46,@PRB47,@PRB48,@PRB49,@PRB50,@PRB51,@PRB52,@PRB53,@PRB54,@PRB55,@PRB56,@PRB57,@PRB58,@PRB59,@PRB60,@PRB61,@PRB62,@PRB63,@PRB64,@PRB65,@PRB66,@PRB67,@PRB68,@PRB69,@PRB70,@PRB71,@PRB72,@PRB73,@PRB74,@PRB75,@PRB76,@PRB77,@PRB78,@PRB79,@PRB80,@PRB81,@PRB82,@PRB83,@PRB84,@PRB85,@PRB86,@PRB87,@PRB88,@PRB89,@PRB90,@PRB91,@PRB92,@PRB93,@PRB94,@PRB95,@PRB96,@PRB97,@PRB98,@PRB99
+
+			while (@@fetch_status!=-1)
+				begin
+					if (not exists(select tbPRBSample_Recognition.CellID,tbPRBSample_Recognition.StartTime from tbPRBSample_Recognition where tbPRBSample_Recognition.CellID=@CellID and tbPRBSample_Recognition.StartTime=@StartTime))
+					begin
+						insert into tbPRBSample_Recognition (CellID,StartTime,CellName,Period,PRB1,PRB2,PRB3,PRB4,PRB5,PRB6,PRB7,PRB8,PRB9,PRB10,PRB11,PRB12,PRB13,PRB14,PRB15,PRB16,PRB17,PRB18,PRB19,PRB20,PRB21,PRB22,PRB23,PRB24,PRB25,PRB26,PRB27,PRB28,PRB29,PRB30,PRB31,PRB32,PRB33,PRB34,PRB35,PRB36,PRB37,PRB38,PRB39,PRB40,PRB41,PRB42,PRB43,PRB44,PRB45,PRB46,PRB47,PRB48,PRB49,PRB50,PRB51,PRB52,PRB53,PRB54,PRB55,PRB56,PRB57,PRB58,PRB59,PRB60,PRB61,PRB62,PRB63,PRB64,PRB65,PRB66,PRB67,PRB68,PRB69,PRB70,PRB71,PRB72,PRB73,PRB74,PRB75,PRB76,PRB77,PRB78,PRB79,PRB80,PRB81,PRB82,PRB83,PRB84,PRB85,PRB86,PRB87,PRB88,PRB89,PRB90,PRB91,PRB92,PRB93,PRB94,PRB95,PRB96,PRB97,PRB98,PRB99)
+						 values (@CellID,@StartTime,@CellName,@Period,@PRB1,@PRB2,@PRB3,@PRB4,@PRB5,@PRB6,@PRB7,@PRB8,@PRB9,@PRB10,@PRB11,@PRB12,@PRB13,@PRB14,@PRB15,@PRB16,@PRB17,@PRB18,@PRB19,@PRB20,@PRB21,@PRB22,@PRB23,@PRB24,@PRB25,@PRB26,@PRB27,@PRB28,@PRB29,@PRB30,@PRB31,@PRB32,@PRB33,@PRB34,@PRB35,@PRB36,@PRB37,@PRB38,@PRB39,@PRB40,@PRB41,@PRB42,@PRB43,@PRB44,@PRB45,@PRB46,@PRB47,@PRB48,@PRB49,@PRB50,@PRB51,@PRB52,@PRB53,@PRB54,@PRB55,@PRB56,@PRB57,@PRB58,@PRB59,@PRB60,@PRB61,@PRB62,@PRB63,@PRB64,@PRB65,@PRB66,@PRB67,@PRB68,@PRB69,@PRB70,@PRB71,@PRB72,@PRB73,@PRB74,@PRB75,@PRB76,@PRB77,@PRB78,@PRB79,@PRB80,@PRB81,@PRB82,@PRB83,@PRB84,@PRB85,@PRB86,@PRB87,@PRB88,@PRB89,@PRB90,@PRB91,@PRB92,@PRB93,@PRB94,@PRB95,@PRB96,@PRB97,@PRB98,@PRB99)
+					end
+					else begin
+						update tbPRBSample_Recognition
+						set CellID=@CellID,StartTime=@StartTime,CellName=@CellName,Period=@Period,PRB1=@PRB1,PRB2=@PRB2,PRB3=@PRB3,PRB4=@PRB4,PRB5=@PRB5,PRB6=@PRB6,
+						PRB7=@PRB7,PRB8=@PRB8,PRB9=@PRB9,PRB10=@PRB10,PRB11=@PRB11,PRB12=@PRB12,PRB13=@PRB13,PRB14=@PRB14,PRB15=@PRB15,PRB16=@PRB16,PRB17=@PRB17,PRB18=@PRB18,PRB19=@PRB19,PRB20=@PRB20,PRB21=@PRB21,PRB22=@PRB22,PRB23=@PRB23,PRB24=@PRB24,PRB25=@PRB25,PRB26=@PRB26,PRB27=@PRB27,PRB28=@PRB28,PRB29=@PRB29,PRB30=@PRB30,PRB31=@PRB31,PRB32=@PRB32,PRB33=@PRB33,PRB34=@PRB34,PRB35=@PRB35,PRB36=@PRB36,PRB37=@PRB37,PRB38=@PRB38,PRB39=@PRB39,PRB40=@PRB40,PRB41=@PRB41,PRB42=@PRB42,PRB43=@PRB43,PRB44=@PRB44,PRB45=@PRB45,PRB46=@PRB46,PRB47=@PRB47,PRB48=@PRB48,PRB49=@PRB49,PRB50=@PRB50,PRB51=@PRB51,PRB52=@PRB52,PRB53=@PRB53,PRB54=@PRB54,PRB55=@PRB55,PRB56=@PRB56,PRB57=@PRB57,PRB58=@PRB58,PRB59=@PRB59,PRB60=@PRB60,PRB61=@PRB61,PRB62=@PRB62,PRB63=@PRB63,PRB64=@PRB64,PRB65=@PRB65,PRB66=@PRB66,PRB67=@PRB67,PRB68=@PRB68,PRB69=@PRB69,PRB70=@PRB70,PRB71=@PRB71,PRB72=@PRB72,PRB73=@PRB73,PRB74=@PRB74,PRB75=@PRB75,PRB76=@PRB76,PRB77=@PRB77,PRB78=@PRB78,PRB79=@PRB79,PRB80=@PRB80,PRB81=@PRB81,PRB82=@PRB82,PRB83=@PRB83,PRB84=@PRB84,PRB85=@PRB85,PRB86=@PRB86,PRB87=@PRB87,PRB88=@PRB88,PRB89=@PRB89,PRB90=@PRB90,PRB91=@PRB91,PRB92=@PRB92,PRB93=@PRB93,PRB94=@PRB94,PRB95=@PRB95,PRB96=@PRB96,
+						PRB97=@PRB97,PRB98=@PRB98,PRB99=@PRB99
+
+						where tbPRBSample_Recognition.CellID=@CellID and tbPRBSample_Recognition.StartTime=@StartTime
+					end
+					fetch next from mcur into @CellID,@StartTime,@CellName,@Period,@PRB1,@PRB2,@PRB3,@PRB4,@PRB5,@PRB6,@PRB7,@PRB8,@PRB9,@PRB10,@PRB11,@PRB12,@PRB13,@PRB14,@PRB15,@PRB16,@PRB17,@PRB18,@PRB19,@PRB20,@PRB21,@PRB22,@PRB23,@PRB24,@PRB25,@PRB26,@PRB27,@PRB28,@PRB29,@PRB30,@PRB31,@PRB32,@PRB33,@PRB34,@PRB35,@PRB36,@PRB37,@PRB38,@PRB39,@PRB40,@PRB41,@PRB42,@PRB43,@PRB44,@PRB45,@PRB46,@PRB47,@PRB48,@PRB49,@PRB50,@PRB51,@PRB52,@PRB53,@PRB54,@PRB55,@PRB56,@PRB57,@PRB58,@PRB59,@PRB60,@PRB61,@PRB62,@PRB63,@PRB64,@PRB65,@PRB66,@PRB67,@PRB68,@PRB69,@PRB70,@PRB71,@PRB72,@PRB73,@PRB74,@PRB75,@PRB76,@PRB77,@PRB78,@PRB79,@PRB80,@PRB81,@PRB82,@PRB83,@PRB84,@PRB85,@PRB86,@PRB87,@PRB88,@PRB89,@PRB90,@PRB91,@PRB92,@PRB93,@PRB94,@PRB95,@PRB96,@PRB97,@PRB98,@PRB99
+
+				end
+				close mcur
+				deallocate mcur
+		end
+	</SqlCreateTrigger_tbPRBSample_Recognition>
+   
+  </DataImport>
+  <createTable>
+<tbProjectManagement>
+CREATE TABLE [dbo].[tbProjectManagement] (
+    [PROJECT_ID] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NOT NULL,
+    [VERSION_DATE] [datetime] NOT NULL,
+    [DB_NAME] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
+    [CITY] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
+    [PRINCIPAL] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL ) ON [PRIMARY]
+</tbProjectManagement>
+
+<tbInterferenceType>
+CREATE TABLE [dbo].[tbInterferenceType] (
+    [InterferenceID] [int] NOT NULL,
+    [InterferenceName] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NOT NULL) ON [PRIMARY]
+</tbInterferenceType>
+<tbPRBSample_Modeling>
+CREATE TABLE [dbo].[tbPRBSample_Modeling] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+    [CellName] [nvarchar](255) COLLATE Chinese_PRC_CI_AS NULL,
+    [Period] [int] NULL,
+[PRB0] [float] NOT NULL,[PRB1] [float] NOT NULL,[PRB2] [float] NOT NULL,[PRB3] [float] NOT NULL,[PRB4] [float] NOT NULL,[PRB5] [float] NOT NULL,[PRB6] [float] NOT NULL,[PRB7] [float] NOT NULL,[PRB8] [float] NOT NULL,[PRB9] [float] NOT NULL,[PRB10] [float] NOT NULL,[PRB11] [float] NOT NULL,[PRB12] [float] NOT NULL,[PRB13] [float] NOT NULL,[PRB14] [float] NOT NULL,[PRB15] [float] NOT NULL,[PRB16] [float] NOT NULL,[PRB17] [float] NOT NULL,[PRB18] [float] NOT NULL,[PRB19] [float] NOT NULL,[PRB20] [float] NOT NULL,[PRB21] [float] NOT NULL,[PRB22] [float] NOT NULL,[PRB23] [float] NOT NULL,[PRB24] [float] NOT NULL,[PRB25] [float] NOT NULL,[PRB26] [float] NOT NULL,[PRB27] [float] NOT NULL,[PRB28] [float] NOT NULL,[PRB29] [float] NOT NULL,[PRB30] [float] NOT NULL,[PRB31] [float] NOT NULL,[PRB32] [float] NOT NULL,[PRB33] [float] NOT NULL,[PRB34] [float] NOT NULL,[PRB35] [float] NOT NULL,[PRB36] [float] NOT NULL,[PRB37] [float] NOT NULL,[PRB38] [float] NOT NULL,[PRB39] [float] NOT NULL,[PRB40] [float] NOT NULL,[PRB41] [float] NOT NULL,[PRB42] [float] NOT NULL,[PRB43] [float] NOT NULL,[PRB44] [float] NOT NULL,[PRB45] [float] NOT NULL,[PRB46] [float] NOT NULL,[PRB47] [float] NOT NULL,[PRB48] [float] NOT NULL,[PRB49] [float] NOT NULL,[PRB50] [float] NOT NULL,[PRB51] [float] NOT NULL,[PRB52] [float] NOT NULL,[PRB53] [float] NOT NULL,[PRB54] [float] NOT NULL,[PRB55] [float] NOT NULL,[PRB56] [float] NOT NULL,[PRB57] [float] NOT NULL,[PRB58] [float] NOT NULL,[PRB59] [float] NOT NULL,[PRB60] [float] NOT NULL,[PRB61] [float] NOT NULL,[PRB62] [float] NOT NULL,[PRB63] [float] NOT NULL,[PRB64] [float] NOT NULL,[PRB65] [float] NOT NULL,[PRB66] [float] NOT NULL,[PRB67] [float] NOT NULL,[PRB68] [float] NOT NULL,[PRB69] [float] NOT NULL,[PRB70] [float] NOT NULL,[PRB71] [float] NOT NULL,[PRB72] [float] NOT NULL,[PRB73] [float] NOT NULL,[PRB74] [float] NOT NULL,[PRB75] [float] NOT NULL,[PRB76] [float] NOT NULL,[PRB77] [float] NOT NULL,[PRB78] [float] NOT NULL,[PRB79] [float] NOT NULL,[PRB80] [float] NOT NULL,[PRB81] [float] NOT NULL,[PRB82] [float] NOT NULL,[PRB83] [float] NOT NULL,[PRB84] [float] NOT NULL,[PRB85] [float] NOT NULL,[PRB86] [float] NOT NULL,[PRB87] [float] NOT NULL,[PRB88] [float] NOT NULL,[PRB89] [float] NOT NULL,[PRB90] [float] NOT NULL,[PRB91] [float] NOT NULL,[PRB92] [float] NOT NULL,[PRB93] [float] NOT NULL,[PRB94] [float] NOT NULL,[PRB95] [float] NOT NULL,[PRB96] [float] NOT NULL,[PRB97] [float] NOT NULL,[PRB98] [float] NOT NULL,[PRB99] [float] NOT NULL,[InterferenceID][int] not NULL) ON [PRIMARY]
+
+</tbPRBSample_Modeling>
+<tbPRBSample_Recognition>
+CREATE TABLE [dbo].[tbPRBSample_Recognition] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+     [CellName] [nvarchar](255)  NOT NULL,
+    [Period] [int] NULL,
+[PRB1] [float] NOT NULL,[PRB2] [float] NOT NULL,[PRB3] [float] NOT NULL,[PRB4] [float] NOT NULL,[PRB5] [float] NOT NULL,[PRB6] [float] NOT NULL,[PRB7] [float] NOT NULL,[PRB8] [float] NOT NULL,[PRB9] [float] NOT NULL,[PRB10] [float] NOT NULL,[PRB11] [float] NOT NULL,[PRB12] [float] NOT NULL,[PRB13] [float] NOT NULL,[PRB14] [float] NOT NULL,[PRB15] [float] NOT NULL,[PRB16] [float] NOT NULL,[PRB17] [float] NOT NULL,[PRB18] [float] NOT NULL,[PRB19] [float] NOT NULL,[PRB20] [float] NOT NULL,[PRB21] [float] NOT NULL,[PRB22] [float] NOT NULL,[PRB23] [float] NOT NULL,[PRB24] [float] NOT NULL,[PRB25] [float] NOT NULL,[PRB26] [float] NOT NULL,[PRB27] [float] NOT NULL,[PRB28] [float] NOT NULL,[PRB29] [float] NOT NULL,[PRB30] [float] NOT NULL,[PRB31] [float] NOT NULL,[PRB32] [float] NOT NULL,[PRB33] [float] NOT NULL,[PRB34] [float] NOT NULL,[PRB35] [float] NOT NULL,[PRB36] [float] NOT NULL,[PRB37] [float] NOT NULL,[PRB38] [float] NOT NULL,[PRB39] [float] NOT NULL,[PRB40] [float] NOT NULL,[PRB41] [float] NOT NULL,[PRB42] [float] NOT NULL,[PRB43] [float] NOT NULL,[PRB44] [float] NOT NULL,[PRB45] [float] NOT NULL,[PRB46] [float] NOT NULL,[PRB47] [float] NOT NULL,[PRB48] [float] NOT NULL,[PRB49] [float] NOT NULL,[PRB50] [float] NOT NULL,[PRB51] [float] NOT NULL,[PRB52] [float] NOT NULL,[PRB53] [float] NOT NULL,[PRB54] [float] NOT NULL,[PRB55] [float] NOT NULL,[PRB56] [float] NOT NULL,[PRB57] [float] NOT NULL,[PRB58] [float] NOT NULL,[PRB59] [float] NOT NULL,[PRB60] [float] NOT NULL,[PRB61] [float] NOT NULL,[PRB62] [float] NOT NULL,[PRB63] [float] NOT NULL,[PRB64] [float] NOT NULL,[PRB65] [float] NOT NULL,[PRB66] [float] NOT NULL,[PRB67] [float] NOT NULL,[PRB68] [float] NOT NULL,[PRB69] [float] NOT NULL,[PRB70] [float] NOT NULL,[PRB71] [float] NOT NULL,[PRB72] [float] NOT NULL,[PRB73] [float] NOT NULL,[PRB74] [float] NOT NULL,[PRB75] [float] NOT NULL,[PRB76] [float] NOT NULL,[PRB77] [float] NOT NULL,[PRB78] [float] NOT NULL,[PRB79] [float] NOT NULL,[PRB80] [float] NOT NULL,[PRB81] [float] NOT NULL,[PRB82] [float] NOT NULL,[PRB83] [float] NOT NULL,[PRB84] [float] NOT NULL,[PRB85] [float] NOT NULL,[PRB86] [float] NOT NULL,[PRB87] [float] NOT NULL,[PRB88] [float] NOT NULL,[PRB89] [float] NOT NULL,[PRB90] [float] NOT NULL,[PRB91] [float] NOT NULL,[PRB92] [float] NOT NULL,[PRB93] [float] NOT NULL,[PRB94] [float] NOT NULL,[PRB95] [float] NOT NULL,[PRB96] [float] NOT NULL,[PRB97] [float] NOT NULL,[PRB98] [float] NOT NULL,[PRB99] [float] NOT NULL) ON [PRIMARY]
+
+
+</tbPRBSample_Recognition>
+
+<tbFeartureSampleModeling>
+CREATE TABLE [dbo].[tbFeartureSampleModeling] (
+    [ModelID] [int] NOT NULL,
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL ,
+    [RBOrder1] [int] NOT NULL,
+    [RBOrder2] [int] NOT NULL,
+    [RBOrder3] [int] NOT NULL,
+    [RBOrder4] [int] NOt NULL,
+    [RBOrder5] [int] NOT NULL,
+    [InterferenceCoefficient] [NUMERIC](10,2) NOT NULL,
+    [AverageOfPRB0_99] [NUMERIC](10,2) NOT NULL,
+    [AverageOfPRB60_99] [NUMERIC](10,2) NOT NULL,
+    [Slope0_49] [NUMERIC](10,2) NOT NULL,
+    [Slope50_99] [NUMERIC](10,2) NOT NULL,
+    [Slope0_99] [NUMERIC](10,2) NOT NULL,
+    [Variance0_99] [NUMERIC](10,2) NOT NULL,
+    [BurstNumPRB0_99] [int] NOT NULL,
+    [InterferenceID] [int] NOT NULL,
+     [SampleType] [int] NOT NULL) ON [PRIMARY]
+</tbFeartureSampleModeling>
+<tbFeartureSampleRecognition>
+CREATE TABLE [dbo].[tbFeartureSampleRecognition] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+    [RBOrder1] [int] NOT NULL,
+    [RBOrder2] [int] NOT NULL,
+    [RBOrder3] [int] NOT NULL,
+    [RBOrder4] [int] NOt NULL,
+    [RBOrder5] [int] NOT NULL,
+    [InterferenceCoefficient] [NUMERIC](10,2) NOT NULL,
+    [AverageOfPRB0_99] [NUMERIC](10,2) NOT NULL,
+    [AverageOfPRB60_99] [NUMERIC](10,2) NOT NULL,
+    [Slope0_49] [NUMERIC](10,2) NOT NULL,
+    [Slope50_99] [NUMERIC](10,2) NOT NULL,
+    [Slope0_99] [NUMERIC](10,2) NOT NULL,
+    [Variance0_99] [NUMERIC](10,2) NOT NULL,
+    [BurstNumPRB0_99] [int] NOT NULL,
+    [InterferenceID] [int] NOT NULL,
+     [SampleType] [int] NOT NULL) ON [PRIMARY]
+</tbFeartureSampleRecognition>
+<tbPRBSmoothedSample_Modeling>
+CREATE TABLE [dbo].[tbPRBSmoothedSample_Modeling] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime]  NOT NULL,
+[SmoothPRB0] [float] NOT NULL,[SmoothPRB1] [float] NOT NULL,[SmoothPRB2] [float] NOT NULL,[SmoothPRB3] [float] NOT NULL,[SmoothPRB4] [float] NOT NULL,[SmoothPRB5] [float] NOT NULL,[SmoothPRB6] [float] NOT NULL,[SmoothPRB7] [float] NOT NULL,[SmoothPRB8] [float] NOT NULL,[SmoothPRB9] [float] NOT NULL,[SmoothPRB10] [float] NOT NULL,[SmoothPRB11] [float] NOT NULL,[SmoothPRB12] [float] NOT NULL,[SmoothPRB13] [float] NOT NULL,[SmoothPRB14] [float] NOT NULL,[SmoothPRB15] [float] NOT NULL,[SmoothPRB16] [float] NOT NULL,[SmoothPRB17] [float] NOT NULL,[SmoothPRB18] [float] NOT NULL,[SmoothPRB19] [float] NOT NULL,[SmoothPRB20] [float] NOT NULL,[SmoothPRB21] [float] NOT NULL,[SmoothPRB22] [float] NOT NULL,[SmoothPRB23] [float] NOT NULL,[SmoothPRB24] [float] NOT NULL,[SmoothPRB25] [float] NOT NULL,[SmoothPRB26] [float] NOT NULL,[SmoothPRB27] [float] NOT NULL,[SmoothPRB28] [float] NOT NULL,[SmoothPRB29] [float] NOT NULL,[SmoothPRB30] [float] NOT NULL,[SmoothPRB31] [float] NOT NULL,[SmoothPRB32] [float] NOT NULL,[SmoothPRB33] [float] NOT NULL,[SmoothPRB34] [float] NOT NULL,[SmoothPRB35] [float] NOT NULL,[SmoothPRB36] [float] NOT NULL,[SmoothPRB37] [float] NOT NULL,[SmoothPRB38] [float] NOT NULL,[SmoothPRB39] [float] NOT NULL,[SmoothPRB40] [float] NOT NULL,[SmoothPRB41] [float] NOT NULL,[SmoothPRB42] [float] NOT NULL,[SmoothPRB43] [float] NOT NULL,[SmoothPRB44] [float] NOT NULL,[SmoothPRB45] [float] NOT NULL,[SmoothPRB46] [float] NOT NULL,[SmoothPRB47] [float] NOT NULL,[SmoothPRB48] [float] NOT NULL,[SmoothPRB49] [float] NOT NULL,[SmoothPRB50] [float] NOT NULL,[SmoothPRB51] [float] NOT NULL,[SmoothPRB52] [float] NOT NULL,[SmoothPRB53] [float] NOT NULL,[SmoothPRB54] [float] NOT NULL,[SmoothPRB55] [float] NOT NULL,[SmoothPRB56] [float] NOT NULL,[SmoothPRB57] [float] NOT NULL,[SmoothPRB58] [float] NOT NULL,[SmoothPRB59] [float] NOT NULL,[SmoothPRB60] [float] NOT NULL,[SmoothPRB61] [float] NOT NULL,[SmoothPRB62] [float] NOT NULL,[SmoothPRB63] [float] NOT NULL,[SmoothPRB64] [float] NOT NULL,[SmoothPRB65] [float] NOT NULL,[SmoothPRB66] [float] NOT NULL,[SmoothPRB67] [float] NOT NULL,[SmoothPRB68] [float] NOT NULL,[SmoothPRB69] [float] NOT NULL,[SmoothPRB70] [float] NOT NULL,[SmoothPRB71] [float] NOT NULL,[SmoothPRB72] [float] NOT NULL,[SmoothPRB73] [float] NOT NULL,[SmoothPRB74] [float] NOT NULL,[SmoothPRB75] [float] NOT NULL,[SmoothPRB76] [float] NOT NULL,[SmoothPRB77] [float] NOT NULL,[SmoothPRB78] [float] NOT NULL,[SmoothPRB79] [float] NOT NULL,[SmoothPRB80] [float] NOT NULL,[SmoothPRB81] [float] NOT NULL,[SmoothPRB82] [float] NOT NULL,[SmoothPRB83] [float] NOT NULL,[SmoothPRB84] [float] NOT NULL,[SmoothPRB85] [float] NOT NULL,[SmoothPRB86] [float] NOT NULL,[SmoothPRB87] [float] NOT NULL,[SmoothPRB88] [float] NOT NULL,[SmoothPRB89] [float] NOT NULL,[SmoothPRB90] [float] NOT NULL,[SmoothPRB91] [float] NOT NULL,[SmoothPRB92] [float] NOT NULL,[SmoothPRB93] [float] NOT NULL,[SmoothPRB94] [float] NOT NULL,[SmoothPRB95] [float] NOT NULL,[SmoothPRB96] [float] NOT NULL,[SmoothPRB97] [float] NOT NULL,[SmoothPRB98] [float] NOT NULL,[SmoothPRB99] [float] NOT NULL,[BurstNumPRB0_99] [int] NOT NULL) ON [PRIMARY]
+
+</tbPRBSmoothedSample_Modeling>
+<tbPRBSmoothedSample_Recognition>
+CREATE TABLE [dbo].[tbPRBSmoothedSample_Recognition] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+[SmoothPRB0] [float] NOT NULL,[SmoothPRB1] [float] NOT NULL,[SmoothPRB2] [float] NOT NULL,[SmoothPRB3] [float] NOT NULL,[SmoothPRB4] [float] NOT NULL,[SmoothPRB5] [float] NOT NULL,[SmoothPRB6] [float] NOT NULL,[SmoothPRB7] [float] NOT NULL,[SmoothPRB8] [float] NOT NULL,[SmoothPRB9] [float] NOT NULL,[SmoothPRB10] [float] NOT NULL,[SmoothPRB11] [float] NOT NULL,[SmoothPRB12] [float] NOT NULL,[SmoothPRB13] [float] NOT NULL,[SmoothPRB14] [float] NOT NULL,[SmoothPRB15] [float] NOT NULL,[SmoothPRB16] [float] NOT NULL,[SmoothPRB17] [float] NOT NULL,[SmoothPRB18] [float] NOT NULL,[SmoothPRB19] [float] NOT NULL,[SmoothPRB20] [float] NOT NULL,[SmoothPRB21] [float] NOT NULL,[SmoothPRB22] [float] NOT NULL,[SmoothPRB23] [float] NOT NULL,[SmoothPRB24] [float] NOT NULL,[SmoothPRB25] [float] NOT NULL,[SmoothPRB26] [float] NOT NULL,[SmoothPRB27] [float] NOT NULL,[SmoothPRB28] [float] NOT NULL,[SmoothPRB29] [float] NOT NULL,[SmoothPRB30] [float] NOT NULL,[SmoothPRB31] [float] NOT NULL,[SmoothPRB32] [float] NOT NULL,[SmoothPRB33] [float] NOT NULL,[SmoothPRB34] [float] NOT NULL,[SmoothPRB35] [float] NOT NULL,[SmoothPRB36] [float] NOT NULL,[SmoothPRB37] [float] NOT NULL,[SmoothPRB38] [float] NOT NULL,[SmoothPRB39] [float] NOT NULL,[SmoothPRB40] [float] NOT NULL,[SmoothPRB41] [float] NOT NULL,[SmoothPRB42] [float] NOT NULL,[SmoothPRB43] [float] NOT NULL,[SmoothPRB44] [float] NOT NULL,[SmoothPRB45] [float] NOT NULL,[SmoothPRB46] [float] NOT NULL,[SmoothPRB47] [float] NOT NULL,[SmoothPRB48] [float] NOT NULL,[SmoothPRB49] [float] NOT NULL,[SmoothPRB50] [float] NOT NULL,[SmoothPRB51] [float] NOT NULL,[SmoothPRB52] [float] NOT NULL,[SmoothPRB53] [float] NOT NULL,[SmoothPRB54] [float] NOT NULL,[SmoothPRB55] [float] NOT NULL,[SmoothPRB56] [float] NOT NULL,[SmoothPRB57] [float] NOT NULL,[SmoothPRB58] [float] NOT NULL,[SmoothPRB59] [float] NOT NULL,[SmoothPRB60] [float] NOT NULL,[SmoothPRB61] [float] NOT NULL,[SmoothPRB62] [float] NOT NULL,[SmoothPRB63] [float] NOT NULL,[SmoothPRB64] [float] NOT NULL,[SmoothPRB65] [float] NOT NULL,[SmoothPRB66] [float] NOT NULL,[SmoothPRB67] [float] NOT NULL,[SmoothPRB68] [float] NOT NULL,[SmoothPRB69] [float] NOT NULL,[SmoothPRB70] [float] NOT NULL,[SmoothPRB71] [float] NOT NULL,[SmoothPRB72] [float] NOT NULL,[SmoothPRB73] [float] NOT NULL,[SmoothPRB74] [float] NOT NULL,[SmoothPRB75] [float] NOT NULL,[SmoothPRB76] [float] NOT NULL,[SmoothPRB77] [float] NOT NULL,[SmoothPRB78] [float] NOT NULL,[SmoothPRB79] [float] NOT NULL,[SmoothPRB80] [float] NOT NULL,[SmoothPRB81] [float] NOT NULL,[SmoothPRB82] [float] NOT NULL,[SmoothPRB83] [float] NOT NULL,[SmoothPRB84] [float] NOT NULL,[SmoothPRB85] [float] NOT NULL,[SmoothPRB86] [float] NOT NULL,[SmoothPRB87] [float] NOT NULL,[SmoothPRB88] [float] NOT NULL,[SmoothPRB89] [float] NOT NULL,[SmoothPRB90] [float] NOT NULL,[SmoothPRB91] [float] NOT NULL,[SmoothPRB92] [float] NOT NULL,[SmoothPRB93] [float] NOT NULL,[SmoothPRB94] [float] NOT NULL,[SmoothPRB95] [float] NOT NULL,[SmoothPRB96] [float] NOT NULL,[SmoothPRB97] [float] NOT NULL,[SmoothPRB98] [float] NOT NULL,[SmoothPRB99] [float] NOT NULL,[BurstNumPRB0_99] [int] NOT NULL) ON [PRIMARY]
+
+</tbPRBSmoothedSample_Recognition>
+<tbBurstInfo>
+CREATE TABLE [dbo].[tbBurstInfo] (
+    [CellID] [int] NOT NULL,
+    [StartTime] [datetime] NOT NULL,
+    [BurstPRB] [int] NOT NULL,
+    [BurstValue] [NUMERIC](10,2) NOT NULL) ON [PRIMARY]
+</tbBurstInfo>
+<tbModelInfo>
+CREATE TABLE [dbo].[tbModelInfo] (
+    [ModelID] [int] NOT NULL,
+    [ModelStartTime] [datetime] NOT NULL,
+    [ModelEndTime] [datetime] NOT NULL,
+[ModelAddress] [nvarchar](255) NOT NULL,
+[TrainSampleNum] [int]  NULL,
+[TestSampleNum] [int]  NULL,
+[TreeNum] [int]  NULL) ON [PRIMARY]
+</tbModelInfo>
+<tbModelTreeInfo>
+CREATE TABLE [dbo].[tbModelTreeInfo] (
+    [ModelID] [int] NULL,
+[TreeID] [int] NULL,
+[InteriorNodeNum] [int] NULL,
+[LeafNodeNum] [int] NULL,
+[AttibuteNum] [int] NULL,
+[Depth] [int] NULL,
+[Rules] [text] NULL) ON [PRIMARY]
+</tbModelTreeInfo>
+</createTable>
+</Configuration>

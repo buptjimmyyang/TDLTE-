@@ -19,9 +19,51 @@ namespace TD_LTE上行干扰分析系统
         private string projectPerson;
         private string projectArea;
         private string projectDate;
+        private string dbName;
+
+
+        private DbHelper db = null;
+        private SqlConnection conn = null;
+        private SqlConnection connDb = null;
+        void initArea()
+        {
+            string sql = "select distinct CITY from " + NameUnit.projectTable;
+            DataTable table = db.getTable(sql, conn);
+            this.comboBox_projectArea.DataSource = table;
+            if (table.Rows.Count == 0)
+            {
+                this.comboBox_projectArea.Text = "";
+                this.comboBox_projectName.Text = "";
+
+                return;
+            }
+            this.comboBox_projectArea.ValueMember = "CITY";
+            this.comboBox_projectArea.DisplayMember = "CITY";
+        }
+        //初始化项目名
+        void initProjectName(string projectArea)
+        {
+            string sql = "select PROJECT_ID from " + NameUnit.projectTable + " where CITY = '" + projectArea + "'";
+            DataTable res = db.getTable(sql, conn);
+
+            if (res.Rows.Count <= 0)
+                return;
+            this.comboBox_projectName.DataSource = res;
+            this.comboBox_projectName.ValueMember = "PROJECT_ID";
+            this.comboBox_projectName.DisplayMember = "PROJECT_ID";
+
+        }
         public ProjectCreate()
         {
             InitializeComponent();
+
+            db = DbHelper.getInstance();
+            conn = db.getConn(db.getConnStr(NameUnit.getName(NameUnit.guradDb)));
+
+            connDb = db.getConn();
+            connDb.Open();
+
+            initArea();
         }
 
         private void button_create_SizeChanged(object sender, EventArgs e)
@@ -46,25 +88,25 @@ namespace TD_LTE上行干扰分析系统
             auto.GetInitialFormSize(this);
             auto.GetAllCrlLocation(this);
             auto.GetAllCrlSize(this);
-         
-            
+
+            initProjectName(this.comboBox_projectArea.Text);
         }
 
         private void button_create_Click(object sender, EventArgs e)
         {
-            projectName=this.textBox_proName.Text.Trim();
-            projectArea=this.textBox_areaName.Text.Trim();
+            projectName=this.comboBox_projectName.Text.Trim();
+            projectArea=this.comboBox_projectArea.Text.Trim();
             projectPerson=this.textBox_person.Text.Trim();
             projectDate = DateTime.Now.ToString();
             if ( projectName== "")
             {
-                this.textBox_proName.Focus();
+                this.comboBox_projectName.Focus();
                 MessageBox.Show("项目名称不能为空");
                 return;
             }
             if (projectArea == "")
             {
-                this.textBox_areaName.Focus();
+                this.comboBox_projectArea.Focus();
                 MessageBox.Show("地区名称不能为空");
                 return;
             }
@@ -77,15 +119,16 @@ namespace TD_LTE上行干扰分析系统
             
 
             
-            if (NameUnit.existProject(projectName))
+            if (NameUnit.existProject(projectName,projectArea))
             {
                 MessageBox.Show("项目已经存在，不能重新创建");
                 return;
             }
-           
+
+            dbName = projectArea + "_" + projectName;
            //项目不存在的话创建数据库
             TableHelper table = new TableHelper();
-            string baseName=table.createDataBase(projectName);
+            string baseName=table.createDataBase(dbName);
             if (baseName != "")
             {
                 //创建数据表
@@ -104,6 +147,23 @@ namespace TD_LTE上行干扰分析系统
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox_projectArea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sql = "select PROJECT_ID from " + NameUnit.projectTable + " where CITY = '" + this.comboBox_projectArea.Text + "'";
+            DataTable res = db.getTable(sql, conn);
+
+            if (res.Rows.Count <= 0)
+                return;
+            this.comboBox_projectName.DataSource = res;
+        }
+
+        private void ProjectCreate_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            conn.Close();
+            if (connDb != null)
+                connDb.Close();
         }
 
     }

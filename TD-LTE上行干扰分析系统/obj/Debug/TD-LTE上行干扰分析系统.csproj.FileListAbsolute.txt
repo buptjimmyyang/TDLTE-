@@ -12,3 +12,9 @@ E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\o
 E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.ProjectInquire.resources
 E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.progress.resources
 E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.ProjectDelete.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.BusinessMain.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.SelectProject.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.FileTypeSelectForm.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.ImportModelSelectForm.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.ImportMainForm.resources
+E:\实验室\lab\TD-LTE上行干扰分析系统\TD-LTE上行干扰分析系统\obj\Debug\TD_LTE上行干扰分析系统.DataDeleteForm.resources

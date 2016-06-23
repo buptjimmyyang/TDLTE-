@@ -15,6 +15,7 @@ namespace TD_LTE上行干扰分析系统
     {
         private DbHelper db = null;
         private SqlConnection conn = null;
+
         //初始化控件
        private void InitCombox()
        {

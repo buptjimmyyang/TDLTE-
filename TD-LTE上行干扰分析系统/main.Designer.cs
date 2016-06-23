@@ -34,10 +34,7 @@
             this.项目创建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.项目查询ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.项目删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.数据管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.干扰建模ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.干扰分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.业务管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,10 +42,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.项目管理ToolStripMenuItem,
-            this.数据管理ToolStripMenuItem,
-            this.干扰建模ToolStripMenuItem,
-            this.干扰分析ToolStripMenuItem,
-            this.退出ToolStripMenuItem});
+            this.业务管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(465, 25);
@@ -94,29 +88,12 @@
             this.项目删除ToolStripMenuItem.Text = "项目删除";
             this.项目删除ToolStripMenuItem.Click += new System.EventHandler(this.项目删除ToolStripMenuItem_Click);
             // 
-            // 数据管理ToolStripMenuItem
+            // 业务管理ToolStripMenuItem
             // 
-            this.数据管理ToolStripMenuItem.Name = "数据管理ToolStripMenuItem";
-            this.数据管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.数据管理ToolStripMenuItem.Text = "数据管理";
-            // 
-            // 干扰建模ToolStripMenuItem
-            // 
-            this.干扰建模ToolStripMenuItem.Name = "干扰建模ToolStripMenuItem";
-            this.干扰建模ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.干扰建模ToolStripMenuItem.Text = "干扰建模";
-            // 
-            // 干扰分析ToolStripMenuItem
-            // 
-            this.干扰分析ToolStripMenuItem.Name = "干扰分析ToolStripMenuItem";
-            this.干扰分析ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.干扰分析ToolStripMenuItem.Text = "干扰分析";
-            // 
-            // 退出ToolStripMenuItem
-            // 
-            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.退出ToolStripMenuItem.Text = "退出";
+            this.业务管理ToolStripMenuItem.Name = "业务管理ToolStripMenuItem";
+            this.业务管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.业务管理ToolStripMenuItem.Text = "业务管理";
+            this.业务管理ToolStripMenuItem.Click += new System.EventHandler(this.业务管理ToolStripMenuItem_Click);
             // 
             // main
             // 
@@ -140,14 +117,11 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 项目管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 数据管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 干扰建模ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 干扰分析ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 数据库连接ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 项目创建ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 项目查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 项目删除ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 业务管理ToolStripMenuItem;
     }
 }
 

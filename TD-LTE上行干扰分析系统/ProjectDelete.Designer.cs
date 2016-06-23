@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox_projectName = new System.Windows.Forms.ComboBox();
-            this.textBox_projectCity = new System.Windows.Forms.TextBox();
-            this.textBox_projectDate = new System.Windows.Forms.TextBox();
-            this.textBox_projectPerson = new System.Windows.Forms.TextBox();
-            this.button_create = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.textBox_projectDb = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox_projectPerson = new System.Windows.Forms.TextBox();
+            this.textBox_projectDate = new System.Windows.Forms.TextBox();
+            this.comboBox_projectName = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button_create = new System.Windows.Forms.Button();
+            this.comboBox_projectArea = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox_projectArea);
             this.groupBox1.Controls.Add(this.textBox_projectDb);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox_projectPerson);
             this.groupBox1.Controls.Add(this.textBox_projectDate);
-            this.groupBox1.Controls.Add(this.textBox_projectCity);
             this.groupBox1.Controls.Add(this.comboBox_projectName);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -61,32 +61,47 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // label1
+            // textBox_projectDb
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "项目名";
+            this.textBox_projectDb.Location = new System.Drawing.Point(113, 175);
+            this.textBox_projectDb.Name = "textBox_projectDb";
+            this.textBox_projectDb.ReadOnly = true;
+            this.textBox_projectDb.Size = new System.Drawing.Size(121, 21);
+            this.textBox_projectDb.TabIndex = 9;
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "项目地区";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(40, 175);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "数据库名称";
             // 
-            // label3
+            // textBox_projectPerson
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 135);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "创建时间";
+            this.textBox_projectPerson.Location = new System.Drawing.Point(113, 220);
+            this.textBox_projectPerson.Name = "textBox_projectPerson";
+            this.textBox_projectPerson.ReadOnly = true;
+            this.textBox_projectPerson.Size = new System.Drawing.Size(121, 21);
+            this.textBox_projectPerson.TabIndex = 7;
+            // 
+            // textBox_projectDate
+            // 
+            this.textBox_projectDate.Location = new System.Drawing.Point(113, 135);
+            this.textBox_projectDate.Name = "textBox_projectDate";
+            this.textBox_projectDate.ReadOnly = true;
+            this.textBox_projectDate.Size = new System.Drawing.Size(121, 21);
+            this.textBox_projectDate.TabIndex = 6;
+            // 
+            // comboBox_projectName
+            // 
+            this.comboBox_projectName.FormattingEnabled = true;
+            this.comboBox_projectName.Location = new System.Drawing.Point(113, 84);
+            this.comboBox_projectName.Name = "comboBox_projectName";
+            this.comboBox_projectName.Size = new System.Drawing.Size(121, 20);
+            this.comboBox_projectName.TabIndex = 4;
+            this.comboBox_projectName.SelectedIndexChanged += new System.EventHandler(this.comboBox_projectName_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -97,38 +112,32 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "负责人";
             // 
-            // comboBox_projectName
+            // label3
             // 
-            this.comboBox_projectName.FormattingEnabled = true;
-            this.comboBox_projectName.Location = new System.Drawing.Point(113, 40);
-            this.comboBox_projectName.Name = "comboBox_projectName";
-            this.comboBox_projectName.Size = new System.Drawing.Size(121, 20);
-            this.comboBox_projectName.TabIndex = 4;
-            this.comboBox_projectName.SelectedIndexChanged += new System.EventHandler(this.comboBox_projectName_SelectedIndexChanged);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(40, 135);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "创建时间";
             // 
-            // textBox_projectCity
+            // label2
             // 
-            this.textBox_projectCity.Location = new System.Drawing.Point(113, 81);
-            this.textBox_projectCity.Name = "textBox_projectCity";
-            this.textBox_projectCity.ReadOnly = true;
-            this.textBox_projectCity.Size = new System.Drawing.Size(121, 21);
-            this.textBox_projectCity.TabIndex = 5;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(40, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "项目地区";
             // 
-            // textBox_projectDate
+            // label1
             // 
-            this.textBox_projectDate.Location = new System.Drawing.Point(113, 135);
-            this.textBox_projectDate.Name = "textBox_projectDate";
-            this.textBox_projectDate.ReadOnly = true;
-            this.textBox_projectDate.Size = new System.Drawing.Size(121, 21);
-            this.textBox_projectDate.TabIndex = 6;
-            // 
-            // textBox_projectPerson
-            // 
-            this.textBox_projectPerson.Location = new System.Drawing.Point(113, 220);
-            this.textBox_projectPerson.Name = "textBox_projectPerson";
-            this.textBox_projectPerson.ReadOnly = true;
-            this.textBox_projectPerson.Size = new System.Drawing.Size(121, 21);
-            this.textBox_projectPerson.TabIndex = 7;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "项目名";
             // 
             // button_create
             // 
@@ -140,22 +149,14 @@
             this.button_create.UseVisualStyleBackColor = true;
             this.button_create.Click += new System.EventHandler(this.button_create_Click);
             // 
-            // label5
+            // comboBox_projectArea
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 175);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "数据库名称";
-            // 
-            // textBox_projectDb
-            // 
-            this.textBox_projectDb.Location = new System.Drawing.Point(113, 175);
-            this.textBox_projectDb.Name = "textBox_projectDb";
-            this.textBox_projectDb.ReadOnly = true;
-            this.textBox_projectDb.Size = new System.Drawing.Size(121, 21);
-            this.textBox_projectDb.TabIndex = 9;
+            this.comboBox_projectArea.FormattingEnabled = true;
+            this.comboBox_projectArea.Location = new System.Drawing.Point(113, 31);
+            this.comboBox_projectArea.Name = "comboBox_projectArea";
+            this.comboBox_projectArea.Size = new System.Drawing.Size(121, 20);
+            this.comboBox_projectArea.TabIndex = 10;
+            this.comboBox_projectArea.SelectedIndexChanged += new System.EventHandler(this.comboBox_projectArea_SelectedIndexChanged);
             // 
             // ProjectDelete
             // 
@@ -179,7 +180,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox_projectPerson;
         private System.Windows.Forms.TextBox textBox_projectDate;
-        private System.Windows.Forms.TextBox textBox_projectCity;
         private System.Windows.Forms.ComboBox comboBox_projectName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -188,5 +188,6 @@
         private System.Windows.Forms.Button button_create;
         private System.Windows.Forms.TextBox textBox_projectDb;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox_projectArea;
     }
 }

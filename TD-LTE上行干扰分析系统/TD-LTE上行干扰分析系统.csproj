@@ -52,7 +52,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoSizeFormClass.cs" />
+    <Compile Include="BusinessMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessMain.Designer.cs">
+      <DependentUpon>BusinessMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataDeleteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataDeleteForm.Designer.cs">
+      <DependentUpon>DataDeleteForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportFile.cs" />
+    <Compile Include="FileTypeSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileTypeSelectForm.designer.cs">
+      <DependentUpon>FileTypeSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportFile.cs" />
+    <Compile Include="ImportMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportMainForm.designer.cs">
+      <DependentUpon>ImportMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportModelSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportModelSelectForm.designer.cs">
+      <DependentUpon>ImportModelSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogHelper.cs" />
     <Compile Include="progress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +102,12 @@
     </Compile>
     <Compile Include="ProjectInquire.Designer.cs">
       <DependentUpon>ProjectInquire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectProject.Designer.cs">
+      <DependentUpon>SelectProject.cs</DependentUpon>
     </Compile>
     <Compile Include="TableHelper.cs" />
     <Compile Include="DbHelper.cs" />
@@ -94,8 +132,24 @@
       <DependentUpon>ProjectCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XMLHelper.cs" />
+    <EmbeddedResource Include="BusinessMain.resx">
+      <DependentUpon>BusinessMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataDeleteForm.resx">
+      <DependentUpon>DataDeleteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DbLogin.resx">
       <DependentUpon>DbLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileTypeSelectForm.resx">
+      <DependentUpon>FileTypeSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportMainForm.resx">
+      <DependentUpon>ImportMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportModelSelectForm.resx">
+      <DependentUpon>ImportModelSelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
@@ -121,6 +175,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SelectProject.resx">
+      <DependentUpon>SelectProject.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

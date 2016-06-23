@@ -28,12 +28,7 @@ namespace TD_LTE上行干扰分析系统
 
         private DbHelper()
         {
-            // connStr = @"Data Source=server;Initial Catalog=database;User ID=uid;Pwd=passwd;Connect Timeout=500000;Pooling=False;";
-            //connStr = connStr.Replace("server", ConfigurationManager.AppSettings["server"]);
-            //connStr = connStr.Replace("database", ConfigurationManager.AppSettings["database"]);
-            //connStr = connStr.Replace("uid", ConfigurationManager.AppSettings["uid"]);
-            //connStr = connStr.Replace("passwd", ConfigurationManager.AppSettings["pwd"]);
-            //ConfigurationManager.AppSettings["pwd"] = "";
+            
         }
         public static DbHelper getInstance()
         {
@@ -154,11 +149,13 @@ namespace TD_LTE上行干扰分析系统
 
             if (reader.HasRows)
             {
+				reader.Close();
                 conn.Close();
                 return true;
             }
             else
             {
+				reader.Close();
                 conn.Close();
                 return false;
             }
@@ -173,11 +170,13 @@ namespace TD_LTE上行干扰分析系统
 
             if (reader.HasRows)
             {
+				reader.Close();
                 conn.Close();
                 return true;
             }
             else
             {
+				reader.Close();
                 conn.Close();
                 return false;
             }
@@ -202,5 +201,110 @@ namespace TD_LTE上行干扰分析系统
             return table;
         }
 
+
+        //执行sql语句返回list
+        public ArrayList getResult(string sql,SqlConnection conn)
+        
+        {
+            ArrayList result = new ArrayList();
+            SqlDataReader reader = null;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = sql;
+                cmd.CommandTimeout = 5000000;
+                cmd.Connection = conn;
+                reader = cmd.ExecuteReader();
+                //SqlDataReader用法
+                while (reader.Read())
+                    result.Add(reader.GetString(0));
+                reader.Close();
+            }
+            catch (SqlException e)
+            {
+                reader.Close();
+                return null;
+            }
+            return result;
+        }
+
+        //批量插入数据
+        /*
+        * 批量插入数据
+        */
+        public bool BatchInsert(String tableName,  DataTable dt,string connStr)
+        {
+            try
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    //指定大容量插入是否对表激发触发器。此属性的默认值为False
+                   
+                    
+                    SqlBulkCopy bulkCopy;
+                    bulkCopy = new SqlBulkCopy(connStr, SqlBulkCopyOptions.FireTriggers);
+
+                    bulkCopy.DestinationTableName = tableName;
+
+                    for (int ccc = 0; ccc < dt.Columns.Count; ccc++)
+                    {
+                        bulkCopy.ColumnMappings.Add(dt.Columns[ccc].ColumnName, dt.Columns[ccc].ColumnName);
+                    }
+
+                    bulkCopy.WriteToServer(dt);
+                    bulkCopy.Close();
+                    bulkCopy = null;
+
+                    dt.Clear();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+              //  MessageBox.Show(connStr+"----"+ex.Message);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool BatchInsert(String tableName, ref DataTable dt, ref List<String> databaseFields,string connstr, bool needTrigger = false, bool clearDT = true)
+        {
+            try
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    //指定大容量插入是否对表激发触发器。此属性的默认值为False
+                    //如果不需要触发触发器则
+                    SqlBulkCopy bulkCopy;
+                   
+                    //如果需要触发器，则
+                    
+                        bulkCopy = new SqlBulkCopy(connstr, SqlBulkCopyOptions.FireTriggers);
+
+                    bulkCopy.DestinationTableName = tableName;
+
+                    for (int ccc = 0; ccc < databaseFields.Count; ccc++)
+                    {
+                        bulkCopy.ColumnMappings.Add(databaseFields[ccc], databaseFields[ccc]);
+                    }
+
+                    bulkCopy.WriteToServer(dt);
+                    bulkCopy.Close();
+                    bulkCopy = null;
+                    if (clearDT)
+                    {
+                        dt.Clear();
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+
+            return true;
+        }
     }
 }

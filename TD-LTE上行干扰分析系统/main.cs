@@ -23,6 +23,9 @@ namespace TD_LTE上行干扰分析系统
         private ProjectDelete proDelete = null;
 
 
+        //选择项目窗口
+        private SelectProject selectPro = null;
+
 
         //1.声明自适应类实例
         private AutomaticSize auto = new AutomaticSize();  
@@ -102,6 +105,20 @@ namespace TD_LTE上行干扰分析系统
             {
                 proDelete = new ProjectDelete();
                 proDelete.Show();
+            }
+        }
+
+        private void 业务管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!db.isLoginSql())
+            {
+                MessageBox.Show("数据库尚未连接，请重新连接数据库");
+                return;
+            }
+            if (proDelete == null || proDelete.IsDisposed)
+            {
+                selectPro = new SelectProject();
+                selectPro.Show();
             }
         }
         
